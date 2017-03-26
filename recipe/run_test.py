@@ -48,9 +48,10 @@ class TestDlib(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         # Get paths to test data
-        test_dir_path = os.path.dirname(os.path.abspath(__file__))
+        test_dir_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'test_data')
         cls.face_jpg_path = os.path.join(test_dir_path, 'face.jpg')
         cls.face_png_path = os.path.join(test_dir_path, 'face.png')
+        cls.images_xml_path = os.path.join(test_dir_path, 'images.xml')
 
         # Download shape_predictor model
         print('Downloading {} to ./{}'.format(SHAPE_PREDICTOR_URL, 
@@ -84,7 +85,7 @@ class TestDlib(unittest.TestCase):
         options.C = 1
         options.num_threads = 1
 
-        dlib.train_simple_object_detector('images.xml', "test.svm", options)
+        dlib.train_simple_object_detector(self.images_xml_path, './test.svm', options)
         self.assertTrue(os.path.exists('./test.svm'))
 
 if __name__ == '__main__':
