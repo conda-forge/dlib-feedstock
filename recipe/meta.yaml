@@ -55,7 +55,7 @@ about:
   home: http://dlib.net/
   license: Boost 1.0
   license_file: dlib/LICENSE.txt
-  summary: Modern C++ toolkit containing machine learning algorithms with Python bindings.
+  summary: Modern C++ toolkit containing machine learning algorithms with Python bindings
 
 extra:
   recipe-maintainers:
