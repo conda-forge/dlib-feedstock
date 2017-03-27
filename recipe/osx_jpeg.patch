@@ -1,6 +1,6 @@
 --- dlib/CMakeLists.txt
 +++ dlib/CMakeLists.txt
-@@ -362,7 +362,7 @@
+@@ -403,7 +403,7 @@
              set(CMAKE_REQUIRED_LIBRARIES ${JPEG_LIBRARY})
              CHECK_FUNCTION_EXISTS(jpeg_read_header LIBJPEG_IS_GOOD)
           endif()
