@@ -1,6 +1,6 @@
---- dlib/cmake_find_blas.txt
-+++ dlib/cmake_find_blas.txt
-@@ -140,15 +140,8 @@
+--- a/dlib/cmake_utils/cmake_find_blas.txt
++++ b/dlib/cmake_utils/cmake_find_blas.txt
+@@ -156,15 +156,8 @@ if (UNIX OR MINGW)
           set(blas_found 1)
           message(STATUS "Found OpenBLAS library")
           set(CMAKE_REQUIRED_LIBRARIES ${blas_libraries})
