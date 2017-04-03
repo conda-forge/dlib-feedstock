@@ -17,6 +17,7 @@ source:
     - win_png.patch                 # [win]
 
 build:
+  skip: True                   # [win and py<35]
   number: 200
   features:                    # [not win]
     - blas_{{ blas_variant }}  # [not win]
