@@ -11,10 +11,11 @@ source:
   sha256: 2bed9669f1a5c436579498d0806b27a9b60c42a975a9b6e67b594b40f58b1a88
 
   patches:
-    - osx_jpeg.patch                # [osx]
-    - lapack_sgetrf.patch           # [unix]
-    - win_boost.patch               # [win]
-    - win_png.patch                 # [win]
+    - osx_jpeg.patch        # [osx]
+    - lapack_sgetrf.patch   # [unix]
+    - win_boost.patch       # [win]
+    - win_png.patch         # [win]
+    - win_jpeg.patch        # [win]
 
 build:
   number: 200
