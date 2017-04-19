@@ -18,7 +18,7 @@ source:
     - add_global_cxx_release.patch
 
 build:
-  number: 200
+  number: 201
   features:                    # [not win]
     - blas_{{ blas_variant }}  # [not win]
 
@@ -27,22 +27,22 @@ requirements:
    - python
    - cmake
    - toolchain
-   - openblas 0.2.18|0.2.18.*.    # [not win]
+   - openblas 0.2.19|0.2.19.*    # [not win]
    - blas 1.1 {{ blas_variant }}  # [not win]
    - numpy x.x
-   - boost 1.61.*
+   - boost 1.62.*
    - jpeg 9*                      # [not win]
-   - libpng >=1.6.21,<1.7
+   - libpng >=1.6.23,<1.7
    - sqlite 3.13.*                # [not win]
 
   run:
    - python
-   - openblas 0.2.18|0.2.18.*.    # [not win]
+   - openblas 0.2.19|0.2.19.*    # [not win]
    - blas 1.1 {{ blas_variant }}  # [not win]
    - numpy x.x
-   - boost 1.61.*
+   - boost 1.62.*
    - jpeg 9*                      # [not win]
-   - libpng >=1.6.21,<1.7
+   - libpng >=1.6.23,<1.7
    - sqlite 3.13.*                # [not win]
 
 test:
