@@ -86,8 +86,6 @@ class TestDlib(unittest.TestCase):
         options.C = 1
         options.num_threads = 1
 
-        # Change the working directory so that Windows can find the images
-        os.chdir(self.test_dir_path)
         dlib.train_simple_object_detector(self.images_xml_path, './test.svm',
                                           options)
         self.assertTrue(os.path.exists('./test.svm'))
