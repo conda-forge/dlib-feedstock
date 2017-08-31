@@ -20,7 +20,7 @@ source:
 
 build:
   skip: True                   # [win and py<35]
-  number: 200
+  number: 201
   features:                    # [not win]
     - blas_{{ blas_variant }}  # [not win]
 
@@ -32,7 +32,7 @@ requirements:
    - openblas 0.2.19|0.2.19.*     # [not win]
    - blas 1.1 {{ blas_variant }}  # [not win]
    - numpy x.x
-   - boost 1.63.*
+   - boost 1.64.*
    - jpeg 9*                      # [not win]
    - libpng >=1.6.28,<1.7
    - sqlite 3.13.*                # [not win]
@@ -42,7 +42,7 @@ requirements:
    - openblas 0.2.19|0.2.19.*     # [not win]
    - blas 1.1 {{ blas_variant }}  # [not win]
    - numpy x.x
-   - boost 1.63.*
+   - boost 1.64.*
    - jpeg 9*                      # [not win]
    - libpng >=1.6.28,<1.7
    - sqlite 3.13.*                # [not win]
