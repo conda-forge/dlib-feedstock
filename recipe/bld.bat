@@ -26,7 +26,7 @@ cmake ..\tools\python -LAH -G"NMake Makefiles"              ^
 -DDLIB_PNG_SUPPORT=1                                        ^
 -DPNG_INCLUDE_DIR="%LIBRARY_INC%"                           ^
 -DPNG_PNG_INCLUDE_DIR="%LIBRARY_INC%"                       ^
--DPNG_LIBRARY=%PNG_LIBRARY%                                 ^
+-DPNG_LIBRARY="%PNG_LIBRARY%"                               ^
 -DZLIB_INCLUDE_DIRS="%LIBRARY_INC%"                         ^
 -DZLIB_LIBRARIES="%LIBRARY_BIN%\zlib.dll"                   ^
 -DDLIB_JPEG_SUPPORT=1                                       ^

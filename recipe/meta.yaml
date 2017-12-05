@@ -1,5 +1,5 @@
 {% set name = "dlib" %}
-{% set version = "19.4" %}
+{% set version = "19.7" %}
 {% set blas_variant = "openblas" %}
 
 package:
@@ -8,44 +8,48 @@ package:
 
 source:
   url: https://github.com/davisking/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 2bed9669f1a5c436579498d0806b27a9b60c42a975a9b6e67b594b40f58b1a88
+  sha1: 6dfc0dfa1cd45baa39a9b03238b222cd59041194
 
   patches:
     - osx_jpeg.patch           # [osx]
     - lapack_sgetrf.patch      # [unix]
     - win_boost.patch          # [win]
-    - win_png.patch            # [win]
-    - win_jpeg.patch           # [win]
+    - win_jpeg_png.patch       # [win]
     - win_release_flags.patch  # [win]
 
 build:
   skip: True                   # [win and py<35]
-  number: 201
+  number: 0                    # [win]
+  number: 200                  # [not win]
   features:                    # [not win]
     - blas_{{ blas_variant }}  # [not win]
 
 requirements:
   build:
-   - python
-   - cmake
-   - toolchain
-   - openblas 0.2.19|0.2.19.*     # [not win]
-   - blas 1.1 {{ blas_variant }}  # [not win]
-   - numpy x.x
-   - boost 1.64.*
-   - jpeg 9*                      # [not win]
-   - libpng >=1.6.28,<1.7
-   - sqlite 3.13.*                # [not win]
+    - python
+    - cmake
+    - toolchain
+    - openblas 0.2.20|0.2.20.*     # [not win]
+    - blas 1.1 {{ blas_variant }}  # [not win]
+    - numpy 1.8.*                  # [not (win and (py35 or py36))]
+    - numpy 1.9.*                  # [win and py35]
+    - numpy 1.11.*                 # [win and py36]
+    - boost 1.65.1
+    - jpeg 9*                      # [not win]
+    - libpng >=1.6.22,<1.6.31
+    - sqlite 3.13.*                # [not win]
 
   run:
-   - python
-   - openblas 0.2.19|0.2.19.*     # [not win]
-   - blas 1.1 {{ blas_variant }}  # [not win]
-   - numpy x.x
-   - boost 1.64.*
-   - jpeg 9*                      # [not win]
-   - libpng >=1.6.28,<1.7
-   - sqlite 3.13.*                # [not win]
+    - python
+    - openblas 0.2.20|0.2.20.*     # [not win]
+    - blas 1.1 {{ blas_variant }}  # [not win]
+    - numpy 1.8.*                  # [not (win and (py35 or py36))]
+    - numpy 1.9.*                  # [win and py35]
+    - numpy 1.11.*                 # [win and py36]
+    - boost 1.65.1
+    - jpeg 9*                      # [not win]
+    - libpng >=1.6.22,<1.6.31
+    - sqlite 3.13.*                # [not win]
 
 test:
   files:

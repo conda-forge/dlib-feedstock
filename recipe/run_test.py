@@ -10,9 +10,13 @@ from PIL import Image
 from tqdm import tqdm
 
 
+DLIB_BASE_URL = 'http://dlib.net/files/{}'
+CNN_FACE_DETECTOR_FNAME = 'mmod_human_face_detector.dat'
+CNN_FACE_DETECTOR_BZ2_FNAME = CNN_FACE_DETECTOR_FNAME + '.bz2'
+CNN_FACE_DETECTOR_URL = DLIB_BASE_URL.format(CNN_FACE_DETECTOR_BZ2_FNAME)
 SHAPE_PREDICTOR_FNAME = 'shape_predictor_68_face_landmarks.dat'
 SHAPE_PREDICTOR_BZ2_FNAME = SHAPE_PREDICTOR_FNAME + '.bz2'
-SHAPE_PREDICTOR_URL = 'http://dlib.net/files/{}'.format(SHAPE_PREDICTOR_BZ2_FNAME)
+SHAPE_PREDICTOR_URL = DLIB_BASE_URL.format(SHAPE_PREDICTOR_BZ2_FNAME)
 
 
 def _download_file(url, out_path):
@@ -61,7 +65,20 @@ class TestDlib(unittest.TestCase):
         _bz2_decompress_inplace(SHAPE_PREDICTOR_BZ2_FNAME,
                                 SHAPE_PREDICTOR_FNAME)
 
+        # Download cnn face detector model
+        print('Downloading {} to ./{}'.format(CNN_FACE_DETECTOR_URL,
+                                              CNN_FACE_DETECTOR_BZ2_FNAME))
+        _download_file(CNN_FACE_DETECTOR_URL, CNN_FACE_DETECTOR_BZ2_FNAME)
+        _bz2_decompress_inplace(CNN_FACE_DETECTOR_BZ2_FNAME,
+                                CNN_FACE_DETECTOR_FNAME)
+
     def test_builtin_frontal_face_detection(self):
+        detector = dlib.cnn_face_detection_model_v1(CNN_FACE_DETECTOR_FNAME)
+        image = _load_image_using_pillow(self.face_jpg_path)
+        results = detector(image, 1)
+        self.assertEqual(len(results), 1)
+
+    def test_cnn_face_detection(self):
         detector = dlib.get_frontal_face_detector()
         image = _load_image_using_pillow(self.face_jpg_path)
         results = detector(image)

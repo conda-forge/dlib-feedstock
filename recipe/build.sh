@@ -1,15 +1,10 @@
 #!/bin/bash
 
-rm -fr build
-mkdir build
-cd build
+set +x
 
-if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  DYNAMIC_EXT="so"
-fi
-if [ "$(uname -s)" == "Darwin" ]; then
-  DYNAMIC_EXT="dylib"
-fi
+rm -fr build
+mkdir -p build
+cd build
 
 if [ $PY3K -eq 1 ]; then
   export PY_STR="${PY_VER}m"
@@ -26,7 +21,7 @@ else
   USE_SSE4=0
 fi
 
-PYTHON_LIBRARY_PATH="$PREFIX/lib/libpython$PY_STR.$DYNAMIC_EXT"
+PYTHON_LIBRARY_PATH="$PREFIX/lib/libpython$PY_STR$SHLIB_EXT"
 
 cmake -LAH ../tools/python                              \
   -DCMAKE_PREFIX_PATH="$PREFIX"                         \
@@ -42,12 +37,12 @@ cmake -LAH ../tools/python                              \
   -DDLIB_PNG_SUPPORT=1                                  \
   -DPNG_INCLUDE_DIR="$PREFIX/include"                   \
   -DPNG_PNG_INCLUDE_DIR="$PREFIX/include"               \
-  -DPNG_LIBRARY="$PREFIX/lib/libpng.${DYNAMIC_EXT}"     \
+  -DPNG_LIBRARY="$PREFIX/lib/libpng$SHLIB_EXT"          \
   -DZLIB_INCLUDE_DIRS="$PREFIX/include"                 \
-  -DZLIB_LIBRARIES="$PREFIX/lib/libz.${DYNAMIC_EXT}"    \
+  -DZLIB_LIBRARIES="$PREFIX/lib/libz$SHLIB_EXT"         \
   -DDLIB_JPEG_SUPPORT=1                                 \
   -DJPEG_INCLUDE_DIR="$PREFIX/include"                  \
-  -DJPEG_LIBRARY="$PREFIX/lib/libjpeg.${DYNAMIC_EXT}"   \
+  -DJPEG_LIBRARY="$PREFIX/lib/libjpeg$SHLIB_EXT"        \
   -DDLIB_LINK_WITH_SQLITE3=1                            \
   -DDLIB_NO_GUI_SUPPORT=1                               \
   -DUSE_SSE2_INSTRUCTIONS=1                             \
@@ -58,6 +53,6 @@ cmake -LAH ../tools/python                              \
   -DDLIB_USE_CUDA=0                                     \
   -DDLIB_GIF_SUPPORT=0
 
-make
+make -j$CPU_COUNT
 # Non-standard installation - copy manually
 cp dlib.so $SP_DIR
