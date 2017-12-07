@@ -16,6 +16,7 @@ source:
     - win_boost.patch          # [win]
     - win_jpeg_png.patch       # [win]
     - win_release_flags.patch  # [win]
+    - win_thread_fix.patch     # [win]
 
 build:
   skip: True                   # [win and py<35]
