@@ -1,7 +1,7 @@
 --- dlib/cmake_utils/add_python_module
 +++ dlib/cmake_utils/add_python_module
-@@ -35,44 +35,19 @@
- set(CMAKE_PREFIX_PATH ${PYTHON_PATH})
+@@ -35,45 +35,15 @@
+ list(APPEND CMAKE_PREFIX_PATH "${PYTHON_PATH}")
  
  
 -# To avoid dll hell, always link everything statically when compiling in
@@ -37,17 +37,15 @@
 -    if (NOT Boost_FOUND)
 -        FIND_PACKAGE(Boost 1.41.0 COMPONENTS python)
 -    endif()
--    set(Python_ADDITIONAL_VERSIONS 3.5)
--    FIND_PACKAGE(PythonLibs 3.4 REQUIRED)
+-    set(Python_ADDITIONAL_VERSIONS 3.5 3.6)
+-    FIND_PACKAGE(PythonLibs 3.4)
+-else()
+-    FIND_PACKAGE(Boost 1.41.0 COMPONENTS python)
+-    FIND_PACKAGE(PythonLibs 2.6)
+-endif()
 +
-+if (PYTHON3)  
-+    FIND_PACKAGE(Boost 1.41.0 COMPONENTS python3)
-+    FIND_PACKAGE(PythonLibs $ENV{PY_VER} REQUIRED)
- else()
-     FIND_PACKAGE(Boost 1.41.0 COMPONENTS python)
--    FIND_PACKAGE(PythonLibs 2.6 REQUIRED)
-+    FIND_PACKAGE(PythonLibs $ENV{PY_VER} REQUIRED)
- endif()
++FIND_PACKAGE(Boost 1.41.0 COMPONENTS python3)
++FIND_PACKAGE(PythonLibs $ENV{PY_VER} REQUIRED)
  
- if (NOT Boost_FOUND)
-
+ if (CMAKE_COMPILER_IS_GNUCXX)
+     # Just setting CMAKE_POSITION_INDEPENDENT_CODE should be enough to set
