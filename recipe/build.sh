@@ -26,14 +26,8 @@ PYTHON_LIBRARY_PATH="$PREFIX/lib/libpython$PY_STR$SHLIB_EXT"
 cmake -LAH ../tools/python                              \
   -DCMAKE_PREFIX_PATH="$PREFIX"                         \
   -DCMAKE_BUILD_TYPE="Release"                          \
-  -DBoost_USE_STATIC_LIBS=0                             \
-  -DBoost_USE_STATIC_RUNTIME=0                          \
-  -DBOOST_ROOT="$PREFIX"                                \
-  -DBOOST_INCLUDEDIR="$PREFIX/include"                  \
-  -DBOOST_LIBRARYDIR="$PREFIX/lib"                      \
   -DPYTHON_LIBRARY="$PYTHON_LIBRARY_PATH"               \
   -DPYTHON_INCLUDE_DIR="$PREFIX/include/python$PY_STR"  \
-  -DPYTHON3=$PY3K                                       \
   -DDLIB_PNG_SUPPORT=1                                  \
   -DPNG_INCLUDE_DIR="$PREFIX/include"                   \
   -DPNG_PNG_INCLUDE_DIR="$PREFIX/include"               \
@@ -55,4 +49,4 @@ cmake -LAH ../tools/python                              \
 
 make -j$CPU_COUNT
 # Non-standard installation - copy manually
-cp dlib.so $SP_DIR
+cp dlib*.so $SP_DIR
