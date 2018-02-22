@@ -1,5 +1,5 @@
 {% set name = "dlib" %}
-{% set version = "19.7" %}
+{% set version = "19.9" %}
 {% set blas_variant = "openblas" %}
 
 package:
@@ -8,15 +8,13 @@ package:
 
 source:
   url: https://github.com/davisking/{{ name }}/archive/v{{ version }}.tar.gz
-  sha1: 6dfc0dfa1cd45baa39a9b03238b222cd59041194
+  sha1: 9ff9573dab29136e7157e71e81c26baff53254fa
 
   patches:
     - osx_jpeg.patch           # [osx]
     - lapack_sgetrf.patch      # [unix]
-    - win_boost.patch          # [win]
     - win_jpeg_png.patch       # [win]
     - win_release_flags.patch  # [win]
-    - win_thread_fix.patch     # [win]
 
 build:
   skip: True                   # [win and py<35]
@@ -29,16 +27,17 @@ requirements:
   build:
     - python
     - cmake
-    - toolchain
+    - toolchain3
+    - pkgconfig                    # [not win]
     - openblas 0.2.20|0.2.20.*     # [not win]
     - blas 1.1 {{ blas_variant }}  # [not win]
     - numpy 1.8.*                  # [not (win and (py35 or py36))]
     - numpy 1.9.*                  # [win and py35]
     - numpy 1.11.*                 # [win and py36]
-    - boost 1.65.1
+    - pybind11
     - jpeg 9*                      # [not win]
-    - libpng >=1.6.22,<1.6.31
-    - sqlite 3.13.*                # [not win]
+    - libpng >=1.6.32,<1.6.35
+    - sqlite 3.20.*                # [not win]
 
   run:
     - python
@@ -47,10 +46,9 @@ requirements:
     - numpy 1.8.*                  # [not (win and (py35 or py36))]
     - numpy 1.9.*                  # [win and py35]
     - numpy 1.11.*                 # [win and py36]
-    - boost 1.65.1
     - jpeg 9*                      # [not win]
-    - libpng >=1.6.22,<1.6.31
-    - sqlite 3.13.*                # [not win]
+    - libpng >=1.6.32,<1.6.35
+    - sqlite 3.20.*                # [not win]
 
 test:
   files:
