@@ -14,7 +14,6 @@ rem dlib to build it
 cmake ..\tools\python -LAH -G"NMake Makefiles"              ^
 -DCMAKE_BUILD_TYPE="Release"                                ^
 -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%"                      ^
--DPYTHON3=%PY3K%                                            ^
 -DPYTHON_LIBRARY="%PREFIX%\libs\python%PY_VER_NO_DOT%.lib"  ^
 -DPYTHON_INCLUDE_DIR="%PREFIX%\include"                     ^
 -DDLIB_LINK_WITH_SQLITE3=0                                  ^

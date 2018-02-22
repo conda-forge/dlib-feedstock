@@ -21,6 +21,12 @@ else
   USE_SSE4=0
 fi
 
+if [ "$(uname)" == "Darwin" ]
+then
+  # Enable C++11 explicitly on OSX
+  export CONDA_FORGE_CXXFLAGS="${CONDA_FORGE_CXXFLAGS} -std=c++11"
+fi
+
 PYTHON_LIBRARY_PATH="$PREFIX/lib/libpython$PY_STR$SHLIB_EXT"
 
 cmake -LAH ../tools/python                              \
@@ -46,7 +52,8 @@ cmake -LAH ../tools/python                              \
   -DDLIB_USE_BLAS=1                                     \
   -DDLIB_USE_LAPACK=1                                   \
   -DDLIB_USE_CUDA=0                                     \
-  -DDLIB_GIF_SUPPORT=0
+  -DDLIB_GIF_SUPPORT=0                                  \
+  -DPYBIND11_CPP_STANDARD="-std=c++11"
 
 make -j$CPU_COUNT
 # Non-standard installation - copy manually
