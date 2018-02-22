@@ -1,6 +1,6 @@
 --- dlib/CMakeLists.txt
 +++ dlib/CMakeLists.txt
-@@ -351,66 +351,7 @@
+@@ -350,66 +350,11 @@
  
        if (DLIB_PNG_SUPPORT)
           # try to find libpng 
@@ -65,10 +65,14 @@
 -            set(REQUIRES_LIBS "")
 -         endif()
 +         find_package(PNG)
++
++         include_directories(${PNG_INCLUDE_DIR})
++         set (dlib_needed_libraries ${dlib_needed_libraries} ${PNG_LIBRARIES})
++         set(REQUIRES_LIBS " libpng")
           set(source_files ${source_files}
              image_loader/png_loader.cpp
              image_saver/save_png.cpp
-@@ -418,68 +359,54 @@
+@@ -417,68 +362,54 @@
        endif()
  
        if (DLIB_JPEG_SUPPORT)
@@ -185,4 +189,3 @@
           set(source_files ${source_files}
              image_loader/jpeg_loader.cpp
              image_saver/save_jpeg.cpp
-
