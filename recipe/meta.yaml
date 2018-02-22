@@ -36,7 +36,8 @@ requirements:
     - numpy 1.11.*                 # [win and py36]
     - pybind11
     - jpeg 9*                      # [not win]
-    - libpng >=1.6.32,<1.6.35
+    - libpng >=1.6.22,<1.6.31      # [win]
+    - libpng >=1.6.32,<1.6.35      # [not win]
     - sqlite 3.20.*                # [not win]
 
   run:
