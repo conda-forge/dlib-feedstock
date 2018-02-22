@@ -33,10 +33,11 @@ cmake ..\tools\python -LAH -G"NMake Makefiles"              ^
 -DDLIB_GIF_SUPPORT=0
 if errorlevel 1 exit 1
 
-nmake
+cmake --build . --config Release
 if errorlevel 1 exit 1
 
 rem Copy the dlib library to site packages
+dir
 cd "..\python_examples"
 dir
 xcopy "*.pyd" "%SP_DIR%\" /y
