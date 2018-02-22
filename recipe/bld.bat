@@ -37,5 +37,7 @@ nmake
 if errorlevel 1 exit 1
 
 rem Copy the dlib library to site packages
-move "..\python_examples\dlib.pyd" "%SP_DIR%\dlib.pyd"
+cd "..\python_examples"
+dir
+xcopy "*.pyd" "%SP_DIR%\" /y
 if errorlevel 1 exit 1
