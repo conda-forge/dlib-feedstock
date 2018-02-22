@@ -27,6 +27,7 @@ requirements:
   build:
     - python
     - cmake
+    - toolchain3
     - pkgconfig                    # [not win]
     - openblas 0.2.20|0.2.20.*     # [not win]
     - blas 1.1 {{ blas_variant }}  # [not win]
@@ -35,8 +36,7 @@ requirements:
     - numpy 1.11.*                 # [win and py36]
     - pybind11
     - jpeg 9*                      # [not win]
-    - libpng >=1.6.22,<1.6.31      # [win]
-    - libpng >=1.6.32,<1.6.35      # [not win]
+    - libpng >=1.6.32,<1.6.35
     - sqlite 3.20.*                # [not win]
 
   run:
