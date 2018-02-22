@@ -26,6 +26,7 @@ PYTHON_LIBRARY_PATH="$PREFIX/lib/libpython$PY_STR$SHLIB_EXT"
 cmake -LAH ../tools/python                              \
   -DCMAKE_PREFIX_PATH="$PREFIX"                         \
   -DCMAKE_BUILD_TYPE="Release"                          \
+  -DPYTHON_EXECUTABLE="$PYTHON"                         \
   -DPYTHON_LIBRARY="$PYTHON_LIBRARY_PATH"               \
   -DPYTHON_INCLUDE_DIR="$PREFIX/include/python$PY_STR"  \
   -DDLIB_PNG_SUPPORT=1                                  \
