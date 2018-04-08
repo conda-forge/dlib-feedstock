@@ -1,5 +1,5 @@
 {% set name = "dlib" %}
-{% set version = "19.9" %}
+{% set version = "19.10" %}
 {% set blas_variant = "openblas" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/davisking/{{ name }}/archive/v{{ version }}.tar.gz
-  sha1: 9ff9573dab29136e7157e71e81c26baff53254fa
+  sha1: 624722775d0ff8e4f26889bd7d1d980fcb096927
 
   patches:
     - osx_jpeg.patch           # [osx]
