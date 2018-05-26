@@ -14,14 +14,16 @@ Summary: Modern C++ toolkit containing machine learning algorithms with Python b
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/dlib-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/dlib-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/dlib-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/dlib-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/dlib-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/dlib-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/dlib-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/dlib-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/dlib-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/dlib-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/dlib-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/dlib-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/dlib/badges/version.svg)](https://anaconda.org/conda-forge/dlib)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/dlib/badges/downloads.svg)](https://anaconda.org/conda-forge/dlib)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-dlib-green.svg)](https://anaconda.org/conda-forge/dlib) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dlib.svg)](https://anaconda.org/conda-forge/dlib) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dlib.svg)](https://anaconda.org/conda-forge/dlib) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dlib.svg)](https://anaconda.org/conda-forge/dlib) |
 
 Installing dlib
 ===============
