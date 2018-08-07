@@ -1,0 +1,22 @@
+c_compiler:
+- vs2015
+cxx_compiler:
+- vs2015
+fortran_compiler:
+- flang
+libpng:
+- 1.6.34
+numpy:
+- '1.11'
+pin_run_as_build:
+  libpng:
+    max_pin: x.x
+  python:
+    min_pin: x.x
+    max_pin: x.x
+python:
+- '3.5'
+zip_keys:
+- - python
+  - c_compiler
+  - cxx_compiler
