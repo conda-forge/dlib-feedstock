@@ -18,8 +18,8 @@ source:
 
 build:
   skip: True                   # [win and py<35]
-  number: 0                    # [win]
-  number: 200                  # [not win]
+  number: 1000
+  number: 1200
   features:                    # [not win]
     - blas_{{ blas_variant }}  # [not win]
 
