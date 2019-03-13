@@ -47,7 +47,8 @@ cmake -LAH ../tools/python                              \
   -DDLIB_USE_BLAS=1                                     \
   -DDLIB_USE_LAPACK=1                                   \
   -DDLIB_USE_CUDA=0                                     \
-  -DDLIB_GIF_SUPPORT=0
+  -DDLIB_GIF_SUPPORT=0                                  \
+  || { cat $SRC_DIR/build/CMakeFiles/CMakeOutput.log; cat $SRC_DIR/build/CMakeFiles/CMakeError.log; exit 1; }
 
 make -j$CPU_COUNT
 # Non-standard installation - copy manually
