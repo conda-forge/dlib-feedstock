@@ -12,25 +12,23 @@ source:
 
   patches:
     - osx_jpeg.patch           # [osx]
-    - lapack_sgetrf.patch      # [unix]
     - win_jpeg_png.patch       # [win]
     - win_release_flags.patch  # [win]
 
 build:
   skip: True                   # [win and py<35]
-  number: 0                    # [win]
-  number: 200                  # [not win]
+  number: 1
+  number: 201
   features:                    # [not win]
-    - blas_{{ blas_variant }}  # [not win]
 
 requirements:
   build:
+    - libblas
+    - libcblas
     - python
     - cmake
     - toolchain3
     - pkgconfig                    # [not win]
-    - openblas 0.2.20|0.2.20.*     # [not win]
-    - blas 1.1 {{ blas_variant }}  # [not win]
     - numpy 1.8.*                  # [not (win and (py35 or py36))]
     - numpy 1.9.*                  # [win and py35]
     - numpy 1.11.*                 # [win and py36]
@@ -41,8 +39,6 @@ requirements:
 
   run:
     - python
-    - openblas 0.2.20|0.2.20.*     # [not win]
-    - blas 1.1 {{ blas_variant }}  # [not win]
     - numpy >=1.8.*                # [not (win and (py35 or py36))]
     - numpy >=1.9.*                # [win and py35]
     - numpy >=1.11.*               # [win and py36]
