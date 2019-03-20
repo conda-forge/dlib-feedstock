@@ -17,34 +17,28 @@ source:
 
 build:
   skip: True                   # [win and py<35]
-  number: 1
-  number: 201
-  features:                    # [not win]
+  number: 202
 
 requirements:
   build:
+    - {{ compiler('cxx') }}
+    - cmake
+    - pkgconfig                    # [not win]
+  host:
     - libblas
     - libcblas
     - python
-    - cmake
-    - toolchain3
-    - pkgconfig                    # [not win]
-    - numpy 1.8.*                  # [not (win and (py35 or py36))]
-    - numpy 1.9.*                  # [win and py35]
-    - numpy 1.11.*                 # [win and py36]
+    - numpy
     - pybind11
-    - jpeg 9*                      # [not win]
-    - libpng >=1.6.32,<1.6.35
-    - sqlite 3.20.*                # [not win]
-
+    - jpeg                         # [not win]
+    - libpng
+    - sqlite                       # [not win]
   run:
     - python
-    - numpy >=1.8.*                # [not (win and (py35 or py36))]
-    - numpy >=1.9.*                # [win and py35]
-    - numpy >=1.11.*               # [win and py36]
-    - jpeg 9*                      # [not win]
-    - libpng >=1.6.32,<1.6.35
-    - sqlite 3.20.*                # [not win]
+    - {{ pin_compatible("numpy") }}
+    - jpeg                         # [not win]
+    - libpng
+    - sqlite                       # [not win]
 
 test:
   files:
