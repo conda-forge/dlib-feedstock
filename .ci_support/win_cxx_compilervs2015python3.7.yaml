@@ -2,13 +2,24 @@ channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
+cxx_compiler:
+- vs2015
 libblas:
 - 3.8 *netlib
 libcblas:
 - 3.8 *netlib
+libpng:
+- 1.6.35
+numpy:
+- '1.11'
 pin_run_as_build:
+  libpng:
+    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
 python:
 - '3.7'
+zip_keys:
+- - python
+  - cxx_compiler

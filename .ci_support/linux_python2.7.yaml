@@ -1,18 +1,34 @@
-build_number_decrement:
-- '0'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
+cxx_compiler:
+- gxx
+cxx_compiler_version:
+- '7'
 docker_image:
 - condaforge/linux-anvil-comp7
+jpeg:
+- '9'
 libblas:
 - 3.8 *netlib
 libcblas:
 - 3.8 *netlib
+libpng:
+- 1.6.35
+numpy:
+- '1.9'
 pin_run_as_build:
+  jpeg:
+    max_pin: x
+  libpng:
+    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
+  sqlite:
+    max_pin: x
 python:
 - '2.7'
+sqlite:
+- '3'
