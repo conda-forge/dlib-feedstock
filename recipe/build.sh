@@ -2,6 +2,8 @@
 
 set +x
 
+sed -i.bak 's/2.8.12/3.4/g' CMakeLists.txt
+
 rm -fr build
 mkdir -p build
 cd build
