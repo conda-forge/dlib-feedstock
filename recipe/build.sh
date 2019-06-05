@@ -2,9 +2,13 @@
 
 set +x
 
-find . -type f -name "CMakeLists.txt" -print0 | xargs -0 sed -i.bak "s/cmake_minimum_required(VERSION 2.8.12)/cmake_minimum_required(VERSION 3.5)/g"
+find . -type f -name "CMakeLists.txt" -print0 | xargs -0 sed -i.bak "s/cmake_minimum_required(VERSION 2.8.12)/cmake_minimum_required(VERSION 3.10)/g"
 
-echo "$(echo "cmake_policy(SET CMP0025 NEW)"; cat CMakeLists.txt)" > CMakeLists.txt
+mv tools/python/CMakeLists.txt tools/python/CMakeLists.txt.orig
+echo "cmake_minimum_required(VERSION 3.10)" > tools/python/CMakeLists.txt
+echo "cmake_policy(SET CMP0025 NEW)" >> tools/python/CMakeLists.txt
+echo "project(dlib_python)" >> tools/python/CMakeLists.txt
+cat tools/python/CMakeLists.txt.orig  >> tools/python/CMakeLists.txt
 
 rm -fr build
 mkdir -p build
