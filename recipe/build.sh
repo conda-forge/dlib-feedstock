@@ -2,7 +2,7 @@
 
 set +x
 
-sed -i.bak 's/2.8.12/3.4/g' CMakeLists.txt
+find . -type f -name "CMakeLists.txt" -print0 | xargs -0 sed -i.bak "s/cmake_minimum_required(VERSION 2.8.12)/cmake_minimum_required(VERSION 3.5)/g"
 
 rm -fr build
 mkdir -p build
