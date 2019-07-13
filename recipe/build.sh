@@ -43,9 +43,8 @@ cmake -LAH ../tools/python                              \
   -DPYTHON_LIBRARY="$PYTHON_LIBRARY_PATH"               \
   -DPYTHON_INCLUDE_DIR="$PREFIX/include/python$PY_STR"  \
   -DDLIB_PNG_SUPPORT=1                                  \
-  -DPNG_INCLUDE_DIR="$PREFIX/include"                   \
-  -DPNG_PNG_INCLUDE_DIR="$PREFIX/include"               \
-  -DPNG_LIBRARY="$PREFIX/lib/libpng$SHLIB_EXT"          \
+  -DPNG_INCLUDE_DIRS="$PREFIX/include"                  \
+  -DPNG_LIBRARIES="$PREFIX/lib/libpng$SHLIB_EXT"        \
   -DZLIB_INCLUDE_DIRS="$PREFIX/include"                 \
   -DZLIB_LIBRARIES="$PREFIX/lib/libz$SHLIB_EXT"         \
   -DDLIB_JPEG_SUPPORT=1                                 \
