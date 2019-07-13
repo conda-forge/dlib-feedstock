@@ -10,6 +10,10 @@ echo "cmake_policy(SET CMP0025 NEW)" >> tools/python/CMakeLists.txt
 echo "project(dlib_python)" >> tools/python/CMakeLists.txt
 cat tools/python/CMakeLists.txt.orig  >> tools/python/CMakeLists.txt
 
+rm -fr dlib/external/libjpeg
+rm -fr dlib/external/libpng
+rm -fr dlib/external/zlib
+
 rm -fr build
 mkdir -p build
 cd build
