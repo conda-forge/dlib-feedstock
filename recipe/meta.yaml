@@ -10,11 +10,11 @@ source:
   sha256: 9d2a158b2adad6acba2346f90d929558a691151aa076a0b409ee685534118692
 
   patches:
-    - osx_jpeg.patch           # [osx]
     - lapack_sgetrf.patch      # [unix]
     #- win_jpeg_png.patch       # [win]
     #- win_release_flags.patch  # [win]
     - cxx11_detection.patch
+    - external_deps.patch
 
 build:
   skip: True  # [win and py<35]
@@ -31,13 +31,13 @@ requirements:
     - liblapack   # [not win]
     - libcblas  # [not win]
     - numpy
-    - jpeg  # [not win]
+    - jpeg
     - libpng
     - sqlite  # [not win]
   run:
     - python
     - {{ pin_compatible('numpy') }}
-    - jpeg  # [not win]
+    - jpeg
     - libpng
     - sqlite  # [not win]
 
