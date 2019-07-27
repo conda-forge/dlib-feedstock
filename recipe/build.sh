@@ -7,6 +7,7 @@ cmake -LAH \
   -DCMAKE_INSTALL_PREFIX="$PREFIX" \
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DCMAKE_BUILD_TYPE=Release  \
-  ../tools/python 
+  -DPYTHON_EXECUTABLE=${PREFIX}/bin/python \
+  ../tools/python
 make -j$CPU_COUNT
 cp dlib*.so $SP_DIR
