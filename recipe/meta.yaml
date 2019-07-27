@@ -1,6 +1,5 @@
 {% set name = "dlib" %}
-{% set version = "19.10" %}
-{% set blas_variant = "openblas" %}
+{% set version = "19.17" %}
 
 package:
   name: {{ name }}
@@ -8,47 +7,40 @@ package:
 
 source:
   url: https://github.com/davisking/{{ name }}/archive/v{{ version }}.tar.gz
-  sha1: 624722775d0ff8e4f26889bd7d1d980fcb096927
+  sha256: 9d2a158b2adad6acba2346f90d929558a691151aa076a0b409ee685534118692
 
   patches:
-    - osx_jpeg.patch           # [osx]
     - lapack_sgetrf.patch      # [unix]
-    - win_jpeg_png.patch       # [win]
-    - win_release_flags.patch  # [win]
+    #- win_jpeg_png.patch       # [win]
+    #- win_release_flags.patch  # [win]
+    - cxx11_detection.patch
+    - external_deps.patch
+    - msvc_no_static_runtime.patch
 
 build:
-  skip: True                   # [win and py<35]
-  number: 0                    # [win]
-  number: 200                  # [not win]
-  features:                    # [not win]
-    - blas_{{ blas_variant }}  # [not win]
+  skip: True  # [win and py<35]
+  number: 0
 
 requirements:
   build:
-    - python
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - cmake
-    - toolchain3
-    - pkgconfig                    # [not win]
-    - openblas 0.2.20|0.2.20.*     # [not win]
-    - blas 1.1 {{ blas_variant }}  # [not win]
-    - numpy 1.8.*                  # [not (win and (py35 or py36))]
-    - numpy 1.9.*                  # [win and py35]
-    - numpy 1.11.*                 # [win and py36]
+  host:
+    - python
     - pybind11
-    - jpeg 9*                      # [not win]
-    - libpng >=1.6.32,<1.6.35
-    - sqlite 3.20.*                # [not win]
-
+    - liblapack   # [not win]
+    - libcblas  # [not win]
+    - numpy
+    - jpeg
+    - libpng
+    - sqlite  # [not win]
   run:
     - python
-    - openblas 0.2.20|0.2.20.*     # [not win]
-    - blas 1.1 {{ blas_variant }}  # [not win]
-    - numpy >=1.8.*                # [not (win and (py35 or py36))]
-    - numpy >=1.9.*                # [win and py35]
-    - numpy >=1.11.*               # [win and py36]
-    - jpeg 9*                      # [not win]
-    - libpng >=1.6.32,<1.6.35
-    - sqlite 3.20.*                # [not win]
+    - {{ pin_compatible('numpy') }}
+    - jpeg
+    - libpng
+    - sqlite  # [not win]
 
 test:
   files:
@@ -65,7 +57,7 @@ test:
 
 about:
   home: http://dlib.net/
-  license: Boost 1.0
+  license: BSL-1.0
   license_file: dlib/LICENSE.txt
   summary: Modern C++ toolkit containing machine learning algorithms with Python bindings
 

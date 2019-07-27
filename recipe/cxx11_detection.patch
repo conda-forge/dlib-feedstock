@@ -1,0 +1,35 @@
+diff --git a/dlib/cmake_utils/use_cpp_11.cmake b/dlib/cmake_utils/use_cpp_11.cmake
+index e49e30f2..d9706a96 100644
+--- a/dlib/cmake_utils/use_cpp_11.cmake
++++ b/dlib/cmake_utils/use_cpp_11.cmake
+@@ -71,18 +71,18 @@ else()
+ 
+       set(COMPILER_CAN_DO_CPP_11 1)
+       # Tell cmake that we need C++11 for dlib
+-      target_compile_features(${target_name} 
+-         PUBLIC 
+-            cxx_rvalue_references
+-            cxx_variadic_templates
+-            cxx_lambdas
+-            cxx_defaulted_move_initializers
+-            cxx_delegating_constructors
+-            cxx_thread_local
+-            cxx_constexpr
+-            # cxx_decltype_incomplete_return_types  # purposfully commented out because cmake errors out on this when using visual studio and cmake 3.8.0
+-            cxx_auto_type
+-         )
++#       target_compile_features(${target_name} 
++#          PUBLIC 
++#             cxx_rvalue_references
++#             cxx_variadic_templates
++#             cxx_lambdas
++#             cxx_defaulted_move_initializers
++#             cxx_delegating_constructors
++#             cxx_thread_local
++#             cxx_constexpr
++#             # cxx_decltype_incomplete_return_types  # purposfully commented out because cmake errors out on this when using visual studio and cmake 3.8.0
++#             cxx_auto_type
++#          )
+ 
+       if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+          # Sometimes clang will lie and report that it supports C++11 when
