@@ -5,6 +5,8 @@ cmake -LAH -G"NMake Makefiles"                ^
   -DCMAKE_BUILD_TYPE=Release                  ^
   -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%"      ^
   -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%"   ^
+  -DDLIB_JPEG_SUPPORT=OFF                     ^
+  -DDLIB_LINK_WITH_SQLITE3=OFF                ^
   ../tools/python
 if errorlevel 1 exit 1
 
