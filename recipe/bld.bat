@@ -6,6 +6,7 @@ cmake -LAH -G"NMake Makefiles"                ^
   -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%"      ^
   -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%"   ^
   -DDLIB_LINK_WITH_SQLITE3=OFF                ^
+  -DDLIB_FORCE_MSVC_STATIC_RUNTIME=OFF        ^
   ../tools/python
 if errorlevel 1 exit 1
 

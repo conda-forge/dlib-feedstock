@@ -1,5 +1,5 @@
 {% set name = "dlib" %}
-{% set version = "19.17" %}
+{% set version = "19.18" %}
 
 package:
   name: {{ name }}
@@ -7,15 +7,13 @@ package:
 
 source:
   url: https://github.com/davisking/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 9d2a158b2adad6acba2346f90d929558a691151aa076a0b409ee685534118692
+  sha256: e9a8540ad0ff84eda92dea7127cd7d078457caf7ced64400c25c9a0b8c96e242
 
   patches:
     - lapack_sgetrf.patch      # [unix]
     #- win_jpeg_png.patch       # [win]
     #- win_release_flags.patch  # [win]
     - cxx11_detection.patch
-    - external_deps.patch
-    - msvc_no_static_runtime.patch
 
 build:
   skip: True  # [win and py<35]
