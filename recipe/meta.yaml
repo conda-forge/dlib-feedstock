@@ -16,8 +16,10 @@ source:
     - cxx11_detection.patch
 
 build:
-  skip: True  # [win and py<35]
-  number: 0
+  skip: true  # [win and py<35]
+  number: 1
+  run_exports:
+    - {{ pin_subpackage('dlib', max_pin='x.x') }}
 
 requirements:
   build:
