@@ -11,13 +11,11 @@ source:
 
   patches:
     - lapack_sgetrf.patch      # [unix]
-    #- win_jpeg_png.patch       # [win]
-    #- win_release_flags.patch  # [win]
     - cxx11_detection.patch
 
 build:
   skip: true  # [win and py<35]
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('dlib', max_pin='x.x') }}
 
@@ -38,9 +36,6 @@ requirements:
   run:
     - python
     - {{ pin_compatible('numpy') }}
-    - jpeg
-    - libpng
-    - sqlite  # [not win]
 
 test:
   files:
