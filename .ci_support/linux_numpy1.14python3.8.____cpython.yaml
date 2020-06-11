@@ -33,6 +33,9 @@ pin_run_as_build:
   sqlite:
     max_pin: x
 python:
-- 3.6.* *_cpython
+- 3.8.* *_cpython
 sqlite:
 - '3'
+zip_keys:
+- - numpy
+  - python
