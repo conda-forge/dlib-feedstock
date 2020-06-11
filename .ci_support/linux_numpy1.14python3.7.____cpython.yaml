@@ -36,3 +36,6 @@ python:
 - 3.7.* *_cpython
 sqlite:
 - '3'
+zip_keys:
+- - numpy
+  - python
