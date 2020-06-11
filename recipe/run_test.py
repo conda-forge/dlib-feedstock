@@ -10,11 +10,11 @@ from PIL import Image
 from tqdm import tqdm
 
 
-DLIB_BASE_URL = 'http://dlib.net/files/{}'
+DLIB_BASE_URL = 'https://github.com/davisking/dlib-models/raw/master/{}'
 CNN_FACE_DETECTOR_FNAME = 'mmod_human_face_detector.dat'
 CNN_FACE_DETECTOR_BZ2_FNAME = CNN_FACE_DETECTOR_FNAME + '.bz2'
 CNN_FACE_DETECTOR_URL = DLIB_BASE_URL.format(CNN_FACE_DETECTOR_BZ2_FNAME)
-SHAPE_PREDICTOR_FNAME = 'shape_predictor_68_face_landmarks.dat'
+SHAPE_PREDICTOR_FNAME = 'shape_predictor_5_face_landmarks.dat'
 SHAPE_PREDICTOR_BZ2_FNAME = SHAPE_PREDICTOR_FNAME + '.bz2'
 SHAPE_PREDICTOR_URL = DLIB_BASE_URL.format(SHAPE_PREDICTOR_BZ2_FNAME)
 
@@ -91,7 +91,7 @@ class TestDlib(unittest.TestCase):
         # This is the output of the detector, hardcoded
         detection = dlib.rectangle(left=125, top=56, right=434, bottom=365)
         shape = predictor(image, detection)
-        self.assertEqual(len(shape.parts()), 68)
+        self.assertEqual(len(shape.parts()), 5)
         for p in shape.parts():
             self.assertGreater(p.x, 0)
             self.assertGreater(p.y, 0)
