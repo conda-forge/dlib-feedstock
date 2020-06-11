@@ -1,23 +1,13 @@
 c_compiler:
-- gcc
-c_compiler_version:
-- '7'
+- vs2017
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- gxx
-cxx_compiler_version:
-- '7'
-docker_image:
-- condaforge/linux-anvil-comp7
+- vs2017
 jpeg:
 - '9'
-libcblas:
-- 3.8 *netlib
-liblapack:
-- 3.8.0 *netlib
 libpng:
 - '1.6'
 numpy:
@@ -30,9 +20,5 @@ pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
-  sqlite:
-    max_pin: x
 python:
-- '2.7'
-sqlite:
-- '3'
+- 3.8.* *_cpython
