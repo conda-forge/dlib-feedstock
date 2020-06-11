@@ -1,17 +1,17 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
 c_compiler:
-- clang
+- gcc
 c_compiler_version:
-- '9'
+- '7'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- clangxx
+- gxx
 cxx_compiler_version:
-- '9'
+- '7'
+docker_image:
+- condaforge/linux-anvil-comp7
 jpeg:
 - '9'
 libcblas:
@@ -20,10 +20,6 @@ liblapack:
 - 3.8.0 *netlib
 libpng:
 - '1.6'
-macos_machine:
-- x86_64-apple-darwin13.4.0
-macos_min_version:
-- '10.9'
 numpy:
 - '1.14'
 pin_run_as_build:
@@ -37,6 +33,9 @@ pin_run_as_build:
   sqlite:
     max_pin: x
 python:
-- 3.7.* *_cpython
+- 3.6.* *_cpython
 sqlite:
 - '3'
+zip_keys:
+- - numpy
+  - python
