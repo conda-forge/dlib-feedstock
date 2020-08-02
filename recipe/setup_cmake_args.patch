@@ -1,0 +1,10 @@
+--- setup.py	2020-08-02 10:16:48.809331027 -0400
++++ setup.py	2020-08-02 10:21:24.679677440 -0400
+@@ -141,6 +141,7 @@
+                       '-DPYTHON_EXECUTABLE=' + sys.executable]
+
+         cmake_args += cmake_extra_options
++        cmake_args += os.environ.get("DLIB_CMAKE_ARGS", "").strip().splitlines()
+
+         cfg = 'Debug' if self.debug else 'Release'
+         build_args = ['--config', cfg]
