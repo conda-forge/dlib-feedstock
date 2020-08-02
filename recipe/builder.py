@@ -10,8 +10,8 @@ PREFIX = os.environ["PREFIX"]
 def install():
     if WIN:
         cmake_args = (
-            "DDLIB_FORCE_MSVC_STATIC_RUNTIME=OFF\n"
-            "DDLIB_LINK_WITH_SQLITE3=OFF\n"
+            "-DDLIB_FORCE_MSVC_STATIC_RUNTIME=OFF\n"
+            "-DDLIB_LINK_WITH_SQLITE3=OFF\n"
         ).format(os.environ)
     else:
         cmake_args = (
