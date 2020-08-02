@@ -51,11 +51,10 @@ test:
   source_files:
     - tools/python/test
   requires:
-    - more-itertools <6.0.0
+    - more-itertools
     - pillow
     - pip
     - pytest
-    - pytest =3.8
     - pytest-azurepipelines
     - tqdm
 
