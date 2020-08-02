@@ -40,9 +40,6 @@ requirements:
     - {{ pin_compatible('numpy') }}
     - python
 
-# these require images not shipped with the source distribution
-{% set test_skips = "partition_pixels or get_face_chip" %}
-
 test:
   files:
     - test_data/face.jpg
@@ -63,7 +60,11 @@ test:
 
   commands:
     - python -m pip check
-    - cd tools/python/test && pytest -svv -k "not ({{ test_skips }})"
+    - cd tools/python/test
+    # setup.cfg configures test options
+    - copy {{ RECIPE_DIR }}/setup.cfg .  # [win]
+    - cp {{ RECIPE_DIR }}\setup.cfg .  # [not win]
+    - python -m pytest
 
 about:
   home: http://dlib.net/
