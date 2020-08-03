@@ -5,9 +5,12 @@ import platform
 import os
 
 WIN = platform.system() == "Windows"
-PREFIX = os.environ["PREFIX"]
+
 
 def install():
+    """ populate the environment variable added by setup_cmake_args.patch and
+        actually install with pip
+    """
     if WIN:
         cmake_args = (
             "-DDLIB_FORCE_MSVC_STATIC_RUNTIME=OFF\n"
