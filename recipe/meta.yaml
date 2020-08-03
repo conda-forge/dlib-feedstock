@@ -65,7 +65,7 @@ test:
     - python -m pytest tools/python/test
 
 about:
-  home: http://dlib.net/
+  home: http://dlib.net
   license: BSL-1.0
   license_file: dlib/LICENSE.txt
   summary: toolkit for making real world machine learning and data analysis applications

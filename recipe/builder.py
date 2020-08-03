@@ -6,10 +6,13 @@ import os
 
 WIN = platform.system() == "Windows"
 
+# this is patched in by setup_cmake_args.patch
+PATCH_ENV_VAR = "DLIB_CMAKE_ARGS"
+
 
 def install():
-    """ populate the environment variable added by setup_cmake_args.patch and
-        actually install with pip
+    """ populate the environment variable added by the patch and actually
+        install with pip
     """
     if WIN:
         cmake_args = (
@@ -25,7 +28,11 @@ def install():
         ).format(**os.environ)
 
     env = dict(os.environ)
-    env.update(DLIB_CMAKE_ARGS=cmake_args)
+    env[PATCH_ENV_VAR] = cmake_args
+    print("Added to environment:\n{} = {}".format(
+        PATCH_ENV_VAR,
+        "\t".join(cmake_args)
+    ), flush=True)
 
     return subprocess.call(
         [sys.executable, "-m", "pip", "install", ".", "-vv", "--no-deps"],
