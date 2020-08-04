@@ -1,0 +1,18 @@
+--- setup.py	2020-08-02 14:37:03.484909013 -0400
++++ setup.new.py	2020-08-02 14:40:45.643228628 -0400
+@@ -141,14 +141,13 @@
+                       '-DPYTHON_EXECUTABLE=' + sys.executable]
+ 
+         cmake_args += cmake_extra_options 
++        cmake_args += os.environ.get("DLIB_CMAKE_ARGS", "").strip().splitlines()
+ 
+         cfg = 'Debug' if self.debug else 'Release'
+         build_args = ['--config', cfg]
+ 
+         if platform.system() == "Windows":
+             cmake_args += ['-DCMAKE_LIBRARY_OUTPUT_DIRECTORY_{}={}'.format(cfg.upper(), extdir)]
+-            if sys.maxsize > 2**32:
+-                cmake_args += ['-A', 'x64']
+             # Do a parallel build
+             build_args += ['--', '/m'] 
+         else:
