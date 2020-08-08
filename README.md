@@ -1,7 +1,7 @@
 About dlib
 ==========
 
-Home: http://dlib.net/
+Home: http://dlib.net
 
 Package license: BSL-1.0
 
