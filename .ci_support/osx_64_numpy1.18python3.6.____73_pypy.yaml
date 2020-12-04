@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '10'
+- '11'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -11,19 +11,19 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '10'
+- '11'
 jpeg:
 - '9'
 libcblas:
 - 3.8 *netlib
 liblapack:
-- 3.8.0 *netlib
+- 3.8 *netlib
 libpng:
 - '1.6'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 numpy:
-- '1.16'
+- '1.18'
 pin_run_as_build:
   jpeg:
     max_pin: x
@@ -35,7 +35,7 @@ pin_run_as_build:
   sqlite:
     max_pin: x
 python:
-- 3.8.* *_cpython
+- 3.6.* *_73_pypy
 sqlite:
 - '3'
 target_platform:
@@ -43,5 +43,5 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - numpy
-  - python
+- - python
+  - numpy
