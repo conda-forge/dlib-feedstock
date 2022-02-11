@@ -32,6 +32,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - pybind11                               # [build_platform != target_platform]
+    - cctools_osx-arm64 949.0.1  # [osx and arm64]
   host:
     - jpeg
     - libcblas  # [not win]
