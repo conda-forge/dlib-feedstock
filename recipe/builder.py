@@ -28,10 +28,10 @@ def install():
         ).format(**os.environ)
 
     env = dict(os.environ)
-    env[PATCH_ENV_VAR] = cmake_args
+    env[PATCH_ENV_VAR] = cmake_args + os.environ.get("CMAKE_ARGS", "").replace(" ", "\n")
     print("Added to environment:\n{} = {}".format(
         PATCH_ENV_VAR,
-        "\t".join(cmake_args)
+        "".join(cmake_args)
     ), flush=True)
 
     return subprocess.call(
