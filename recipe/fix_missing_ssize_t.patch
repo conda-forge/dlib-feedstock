@@ -1,0 +1,15 @@
+diff --git a/dlib/external/pybind11/include/pybind11/numpy.h b/dlib/external/pybind11/include/pybind11/numpy.h
+index 9df4934991..5ae2504f8c 100644
+--- a/dlib/external/pybind11/include/pybind11/numpy.h
++++ b/dlib/external/pybind11/include/pybind11/numpy.h
+@@ -26,6 +26,10 @@
+ #if defined(_MSC_VER)
+ #  pragma warning(push)
+ #  pragma warning(disable: 4127) // warning C4127: Conditional expression is constant
++#ifdef _WIN64
++#include <BaseTsd.h>
++using ssize_t = SSIZE_T;
++#endif
+ #endif
+ 
+ /* This will be true on all flat address space platforms and allows us to reduce the
