@@ -15,7 +15,6 @@ source:
     - cxx11_detection.patch
     - setup_cmake_args.patch
     - fix_libtools_error.patch  # [osx]
-    - fix_missing_ssize_t.patch
 
 build:
   number: 0
