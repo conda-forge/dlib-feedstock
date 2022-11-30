@@ -17,7 +17,7 @@ source:
     - fix_libtools_error.patch  # [osx]
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('dlib', max_pin='x.x') }}
 
@@ -58,7 +58,7 @@ test:
     - more-itertools
     - pillow
     - pip
-    - pytest>=  7
+    - pytest>=7
     - pytest-azurepipelines
     - tqdm
 
