@@ -58,7 +58,7 @@ test:
     - more-itertools
     - pillow
     - pip
-    - pytest 7.0.1
+    - pytest>=  7
     - pytest-azurepipelines
     - tqdm
 
