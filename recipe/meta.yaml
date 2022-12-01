@@ -15,6 +15,7 @@ source:
     - cxx11_detection.patch
     - setup_cmake_args.patch
     - fix_libtools_error.patch  # [osx]
+    - unvendor_pybind11.patch
 
 build:
   number: 2
