@@ -1,0 +1,13 @@
+diff --git a/tools/python/CMakeLists.txt b/tools/python/CMakeLists.txt
+index 8309d5fb9..499213f50 100644
+--- a/tools/python/CMakeLists.txt
++++ b/tools/python/CMakeLists.txt
+@@ -35,7 +35,7 @@ if (MSVC)
+     include(${CMAKE_CURRENT_LIST_DIR}/../../dlib/cmake_utils/tell_visual_studio_to_use_static_runtime.cmake)
+ endif()
+ 
+-add_subdirectory(../../dlib/external/pybind11 pybind11_build)
++find_package(pybind11 REQUIRED)
+ add_subdirectory(../../dlib dlib_build)
+ 
+ add_definitions(-DDLIB_VERSION=${DLIB_VERSION})
