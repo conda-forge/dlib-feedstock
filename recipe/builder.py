@@ -18,6 +18,7 @@ def install():
         cmake_args = (
             "-DDLIB_FORCE_MSVC_STATIC_RUNTIME=OFF\n"
             "-DDLIB_LINK_WITH_SQLITE3=OFF\n"
+            "-DBUILD_SHARED_LIBS=ON\n"
         ).format(os.environ)
     else:
         cmake_args = (
@@ -25,6 +26,7 @@ def install():
             "-DPNG_PNG_INCLUDE_DIR={PREFIX}/include\n"
             "-DPNG_INCLUDE_DIR={PREFIX}/include\n"
             "-Dsqlite_path={PREFIX}/include\n"
+            "-DBUILD_SHARED_LIBS=ON\n"
         ).format(**os.environ)
 
     env = dict(os.environ)
