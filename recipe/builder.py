@@ -18,7 +18,7 @@ def install():
         cmake_args = (
             "-DDLIB_FORCE_MSVC_STATIC_RUNTIME=OFF\n"
             "-DDLIB_LINK_WITH_SQLITE3=OFF\n"
-            "-DBUILD_SHARED_LIBS=ON\n"
+            "-DBUILD_SHARED_LIBS=OFF\n"
             "-DDLIB_IN_PROJECT_BUILD=OFF\n"
         ).format(os.environ)
     else:
