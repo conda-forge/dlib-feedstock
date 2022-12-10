@@ -1,0 +1,13 @@
+--- a/dlib/CMakeLists.txt
++++ b/dlib/CMakeLists.txt
+@@ -426,6 +426,10 @@ if (NOT TARGET dlib)
+             )
+       endif()
+
++      if (AARCH64)
++        add_definitions(-DPNG_ARM_NEON_OPT=0) # NEON assembler is not supported
++      endif()
++
+       INCLUDE (CheckFunctionExists)
+
+       if (DLIB_GIF_SUPPORT)
