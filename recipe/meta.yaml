@@ -18,7 +18,7 @@ source:
     - unvendor_pybind11.patch
 
 build:
-  number: 3
+  number: 4
   run_exports:
     - {{ pin_subpackage('dlib', max_pin='x.x') }}
 
@@ -33,7 +33,7 @@ requirements:
     - numpy                                  # [build_platform != target_platform]
     - pybind11                               # [build_platform != target_platform]
   host:
-    - jpeg
+    - libjpeg-turbo
     - libcblas  # [not win]
     - liblapack   # [not win]
     - libpng
