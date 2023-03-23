@@ -1,5 +1,5 @@
 {% set name = "dlib" %}
-{% set version = "19.24.0" %}
+{% set version = "19.24.1" %}
 {% set tag = "v" ~ ".".join(version.split(".")[:2]) %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 24f3009158e0d92386ee0c0c1317a37bab7b5ba846d444194c61ffa0964f986f
+  sha256: e8d3ca047d525eeb36cc47bce45ed0562dab40b0b8f5fa171600dde2fec509c0
 
   patches:
     - lapack_sgetrf.patch      # [unix]
@@ -18,7 +18,7 @@ source:
     - unvendor_pybind11.patch
 
 build:
-  number: 4
+  number: 0
   run_exports:
     - {{ pin_subpackage('dlib', max_pin='x.x') }}
 
