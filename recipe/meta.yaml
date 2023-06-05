@@ -1,5 +1,5 @@
 {% set name = "dlib" %}
-{% set version = "19.24.1" %}
+{% set version = "19.24.2" %}
 {% set tag = "v" ~ ".".join(version.split(".")[:2]) %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: e8d3ca047d525eeb36cc47bce45ed0562dab40b0b8f5fa171600dde2fec509c0
+  sha256: 2d4f618073bc6b297aa01ce05595a2d32b5b37e69cafd99f796e77346f6dcfb5
 
   patches:
     - lapack_sgetrf.patch      # [unix]
