@@ -17,7 +17,7 @@ source:
     - unvendor_pybind11.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('dlib', max_pin='x.x') }}
 
