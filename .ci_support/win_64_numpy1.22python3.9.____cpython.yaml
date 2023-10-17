@@ -7,11 +7,11 @@ channel_targets:
 cxx_compiler:
 - vs2019
 libjpeg_turbo:
-- 2.1.5
+- '3'
 libpng:
 - '1.6'
 numpy:
-- '1.21'
+- '1.22'
 pin_run_as_build:
   python:
     min_pin: x.x
