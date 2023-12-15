@@ -43,7 +43,8 @@ def install():
     ), flush=True)
 
     return subprocess.call(
-        [sys.executable, "-m", "pip", "install", ".", "-vv", "--no-deps"],
+        [sys.executable, "-m", "pip", "install", ".", "-vv",
+            "--no-build-isolation", "--no-deps", "--cache-dir", "pip_cache", "--no-index"],
         cwd=os.environ["SRC_DIR"],
         env=env
     )
