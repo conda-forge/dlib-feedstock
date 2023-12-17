@@ -24,6 +24,9 @@ outputs:
     build:
       string: cuda{{ cuda_compiler_version | replace('.', '') }}py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version != "None"]
       string: cpu_py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}                                                # [cuda_compiler_version == "None"]
+      # weigh down cpu implementation and give cuda preference
+      track_features:
+        - dlib-cpu                               # [cuda_compiler_version in (undefined, "None")]
       run_exports:
         - {{ pin_subpackage('dlib', max_pin='x.x') }}
     script: build-pkg.sh  # [not win]
