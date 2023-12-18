@@ -15,7 +15,7 @@ source:
     - setup_cmake_args.patch
     - fix_libtools_error.patch  # [osx]
     - unvendor_pybind11.patch
-    - do_not_use_cuda_cmake_flags.patch
+    - do_not_use_cuda_cmake_flags.patch  # [linux and aarch64]
 
 build:
   number: 4
