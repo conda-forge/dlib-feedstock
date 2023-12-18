@@ -17,7 +17,7 @@ source:
     - unvendor_pybind11.patch
 
 build:
-  number: 3
+  number: 4
 
 outputs:
   - name: {{ name }}
