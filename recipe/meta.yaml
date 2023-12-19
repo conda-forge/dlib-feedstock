@@ -15,9 +15,10 @@ source:
     - setup_cmake_args.patch
     - fix_libtools_error.patch  # [osx]
     - unvendor_pybind11.patch
+    - do_not_try_cuda_test_compile.patch  # [linux and aarch64]
 
 build:
-  number: 3
+  number: 4
 
 outputs:
   - name: {{ name }}
