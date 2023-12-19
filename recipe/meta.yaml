@@ -19,6 +19,7 @@ source:
 
 build:
   number: 4
+  skip: true  # [aarch64 and cuda_compiler_version != "None"]
 
 outputs:
   - name: {{ name }}
