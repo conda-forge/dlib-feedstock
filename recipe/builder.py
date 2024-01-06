@@ -14,6 +14,15 @@ def install():
     """ populate the environment variable added by the patch and actually
         install with pip
     """
+
+    cuda_version = os.environ.get('cuda_compiler_version', None)
+
+    try:
+        float(cuda_version)
+        is_cuda = True
+    except (TypeError, ValueError):
+        is_cuda = False
+
     if WIN:
         cmake_args = (
             "-DDLIB_FORCE_MSVC_STATIC_RUNTIME=OFF\n"
@@ -30,6 +39,9 @@ def install():
             "-DBUILD_SHARED_LIBS=ON\n"
             "-DDLIB_IN_PROJECT_BUILD=ON\n"
         ).format(**os.environ)
+
+    if is_cuda:
+        cmake_args += "-DCMAKE_CUDA_ARCHITECTURES=all\n"
 
     env = dict(os.environ)
     env[PATCH_ENV_VAR] = cmake_args + os.environ.get("CMAKE_ARGS", "").replace(" ", "\n")
