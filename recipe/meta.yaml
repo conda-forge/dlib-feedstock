@@ -15,7 +15,7 @@ source:
     - setup_cmake_args.patch
     - fix_libtools_error.patch  # [osx]
     - unvendor_pybind11.patch
-    - use_new_cudatoolkit.patch
+    - use_new_cudatoolkit.patch  # [cuda_compiler_version != "None"]
 
 build:
   number: 5
