@@ -83,12 +83,12 @@ outputs:
         - pytest-azurepipelines
         - tqdm
 
-      imports:
-        - dlib
+      imports:  # [not (aarch64 and cuda_compiler_version != "None")]
+        - dlib  # [not (aarch64 and cuda_compiler_version != "None")]
 
       commands:
         - python -m pip check
-        - python -m pytest tools/python/test
+        - python -m pytest tools/python/test  # [not (aarch64 and cuda_compiler_version != "None")]
 
   # Help the linter to avoid errors on a package not having tests.
   {% set dlib_cpu_gpu = name + "-cpu" %}   # [cuda_compiler_version == "None"]
@@ -101,8 +101,8 @@ outputs:
       run:
         - {{ pin_subpackage('dlib', exact=True) }}
     test:
-      imports:
-        - dlib
+      imports:  # [not (aarch64 and cuda_compiler_version != "None")]
+        - dlib  # [not (aarch64 and cuda_compiler_version != "None")]
 
 about:
   home: http://dlib.net
