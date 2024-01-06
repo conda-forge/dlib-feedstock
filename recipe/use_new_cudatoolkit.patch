@@ -1,7 +1,16 @@
 diff --git a/dlib/CMakeLists.txt b/dlib/CMakeLists.txt
-index d2c3ee84..2659ef7a 100644
+index d2c3ee84..36c2e24d 100644
 --- a/dlib/CMakeLists.txt
 +++ b/dlib/CMakeLists.txt
+@@ -13,7 +13,7 @@ if(POLICY CMP0077)
+    cmake_policy(SET CMP0077 NEW)
+ endif()
+ 
+-project(dlib)
++project(dlib LANGUAGES C CXX CUDA)
+ 
+ set(CPACK_PACKAGE_NAME "dlib")
+ set(CPACK_PACKAGE_VERSION_MAJOR "19")
 @@ -26,6 +26,7 @@ if (NOT TARGET dlib)
     message(STATUS "Compiling dlib version: ${VERSION}")
  endif()
@@ -28,7 +37,7 @@ index d2c3ee84..2659ef7a 100644
  macro (enable_preprocessor_switch option_name)
     list(APPEND active_preprocessor_switches "-D${option_name}")
  endmacro()
-@@ -625,158 +615,11 @@ if (NOT TARGET dlib)
+@@ -625,158 +615,10 @@ if (NOT TARGET dlib)
  
  
        if (DLIB_USE_CUDA)
@@ -187,11 +196,10 @@ index d2c3ee84..2659ef7a 100644
 -
 -         if (CUDA_FOUND AND cudnn AND cuda_test_compile_worked AND cudnn_test_compile_worked AND cudnn_include)
 +         if (CUDAToolkit_FOUND AND CUDNN_FOUND)
-+            enable_language(CUDA)
              set(source_files ${source_files} 
                 cuda/cuda_dlib.cu 
                 cuda/cudnn_dlibapi.cpp
-@@ -786,16 +629,16 @@ if (NOT TARGET dlib)
+@@ -786,16 +628,16 @@ if (NOT TARGET dlib)
                 cuda/cuda_data_ptr.cpp
                 cuda/gpu_data.cpp
                 )
@@ -214,7 +222,7 @@ index d2c3ee84..2659ef7a 100644
              message(STATUS "Enabling CUDA support for dlib.  DLIB WILL USE CUDA, compute capabilities: ${DLIB_CUDA_COMPUTE_CAPABILITIES}")
           else()
              set(DLIB_USE_CUDA OFF CACHE STRING ${DLIB_USE_BLAS_STR} FORCE )
-@@ -851,15 +694,7 @@ if (NOT TARGET dlib)
+@@ -851,15 +693,7 @@ if (NOT TARGET dlib)
           endif()
        endif()
  
