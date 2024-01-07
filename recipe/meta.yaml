@@ -100,7 +100,7 @@ outputs:
     requirements:
       run:
         - {{ pin_subpackage('dlib', exact=True) }}
-    test:
+    test:  # [not (aarch64 and cuda_compiler_version != "None")]
       imports:  # [not (aarch64 and cuda_compiler_version != "None")]
         - dlib  # [not (aarch64 and cuda_compiler_version != "None")]
 
