@@ -46,6 +46,7 @@ outputs:
         - numpy                                  # [build_platform != target_platform]
         - pybind11                               # [build_platform != target_platform]
       host:
+        - cuda-version {{ cuda_compiler_version }}  # [(cuda_compiler_version or "None") != "None"]
         - cudnn                                  # [cuda_compiler_version != "None"]
         - nccl                                   # [cuda_compiler_version != "None" and linux]
         - libjpeg-turbo
