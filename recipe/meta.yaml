@@ -62,8 +62,6 @@ outputs:
         - libcublas-dev                             # [(cuda_compiler_version or "").startswith("12")]
         - libcurand-dev                             # [(cuda_compiler_version or "").startswith("12")]
         - libcusolver-dev                           # [(cuda_compiler_version or "").startswith("12")]
-        - cuda-nvcc-tools                           # [(cuda_compiler_version or "").startswith("12")]
-        - cuda-nvcc-impl                            # [(cuda_compiler_version or "").startswith("12")]
       run:
         - {{ pin_compatible('numpy') }}
         - python
