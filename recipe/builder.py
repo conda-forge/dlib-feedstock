@@ -29,6 +29,7 @@ def install():
             "-DDLIB_LINK_WITH_SQLITE3=OFF\n"
             "-DBUILD_SHARED_LIBS=ON\n"
             "-DDLIB_IN_PROJECT_BUILD=ON\n"
+            "-G \"Visual Studio 16 2019\"\n"
         ).format(os.environ)
     else:
         cmake_args = (
