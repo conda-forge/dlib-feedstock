@@ -29,8 +29,8 @@ def install():
             "-DDLIB_LINK_WITH_SQLITE3=OFF\n"
             "-DBUILD_SHARED_LIBS=ON\n"
             "-DDLIB_IN_PROJECT_BUILD=ON\n"
-            "-DCUDNN_INCLUDE_DIR=%LIBRARY_INC%\n"
-            "-DCUDNN_ROOT=%LIBRARY_PREFIX%\n"
+            "-DCUDNN_INCLUDE_DIR:PATH={LIBRARY_INC}\n"
+            "-DCUDNN_ROOT:PATH={LIBRARY_PREFIX}\n"
         ).format(os.environ)
     else:
         cmake_args = (
