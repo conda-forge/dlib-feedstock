@@ -31,6 +31,7 @@ def install():
             "-DDLIB_IN_PROJECT_BUILD=ON\n"
             "-DCUDNN_INCLUDE_DIR:PATH={LIBRARY_INC}\n"
             "-DCUDNN_ROOT:PATH={LIBRARY_PREFIX}\n"
+            "-DCMAKE_FIND_DEBUG_MODE=1\n"
         ).format(os.environ)
     else:
         cmake_args = (
