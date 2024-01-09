@@ -29,7 +29,9 @@ def install():
             "-DDLIB_LINK_WITH_SQLITE3=OFF\n"
             "-DBUILD_SHARED_LIBS=ON\n"
             "-DDLIB_IN_PROJECT_BUILD=ON\n"
-            "-DCUDNN_INCLUDE_DIR:PATH={LIBRARY_INC}\n"
+            "-CUDAToolkit_ROOT:PATH="
+            "{LIBRARY_PREFIX}" if cuda_version >= 12.0 else "{CUDA_HOME}"
+            "\n"
             "-DCUDNN_ROOT:PATH={LIBRARY_PREFIX}\n"
             "-DCMAKE_FIND_DEBUG_MODE=1\n"
         ).format(**os.environ)
