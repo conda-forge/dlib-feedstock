@@ -29,7 +29,7 @@ def install():
             "-DDLIB_LINK_WITH_SQLITE3=OFF\n"
             "-DBUILD_SHARED_LIBS=ON\n"
             "-DDLIB_IN_PROJECT_BUILD=ON\n"
-            "-CUDAToolkit_ROOT:PATH="
+            "-DCUDAToolkit_ROOT:PATH="
             "{LIBRARY_PREFIX}" if float(cuda_version) >= 11.995 else "{CUDA_HOME}"
             "\n"
             "-DCUDNN_ROOT:PATH={LIBRARY_PREFIX}\n"
