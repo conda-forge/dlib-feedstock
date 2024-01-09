@@ -30,7 +30,7 @@ def install():
             "-DBUILD_SHARED_LIBS=ON\n"
             "-DDLIB_IN_PROJECT_BUILD=ON\n"
             "-CUDAToolkit_ROOT:PATH="
-            "{LIBRARY_PREFIX}" if cuda_version >= 12.0 else "{CUDA_HOME}"
+            "{LIBRARY_PREFIX}" if float(cuda_version) >= 11.995 else "{CUDA_HOME}"
             "\n"
             "-DCUDNN_ROOT:PATH={LIBRARY_PREFIX}\n"
             "-DCMAKE_FIND_DEBUG_MODE=1\n"
