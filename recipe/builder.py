@@ -29,12 +29,11 @@ def install():
             "-DDLIB_LINK_WITH_SQLITE3=OFF\n"
             "-DBUILD_SHARED_LIBS=ON\n"
             "-DDLIB_IN_PROJECT_BUILD=ON\n"
-            "-DCUDAToolkit_ROOT:PATH="
-            "{LIBRARY_PREFIX}" if float(cuda_version) >= 11.995 else "{CUDA_HOME}"
-            "\n"
+            "-DCUDAToolkit_ROOT:PATH={LIBRARY_PREFIX}\n"
             "-DCUDNN_ROOT:PATH={LIBRARY_PREFIX}\n"
             "-DCMAKE_FIND_DEBUG_MODE=1\n"
         ).format(**os.environ)
+        #  if float(cuda_version) >= 11.995 else "-DCUDAToolkit_ROOT:PATH={CUDA_HOME}\n"
     else:
         cmake_args = (
             "-DJPEG_INCLUDE_DIR={PREFIX}/include\n"
