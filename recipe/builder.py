@@ -48,10 +48,11 @@ def install():
 
     env = dict(os.environ)
     env[PATCH_ENV_VAR] = cmake_args + os.environ.get("CMAKE_ARGS", "").replace(" ", "\n")
-    # Some CUDA code doesn't compile with C++17 features and NVCC. C++11 works.
-    for env_flags in ["CXXFLAGS", "DEBUG_CXXFLAGS"]:
-        if env_flags in os.environ:
-            env[env_flags] = os.environ.get(env_flags).replace("-std=c++17", "-std=c++11")
+    if not WIN:
+        # Some CUDA code doesn't compile with C++17 features and NVCC. C++11 works.
+        for env_flags in ["CXXFLAGS", "DEBUG_CXXFLAGS"]:
+            if env_flags in os.environ:
+                env[env_flags] = os.environ.get(env_flags).replace("-std=c++17", "-std=c++11")
     print("Added to environment:\n{} = {}".format(
         PATCH_ENV_VAR,
         "".join(cmake_args)
