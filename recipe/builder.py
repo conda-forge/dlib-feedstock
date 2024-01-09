@@ -32,7 +32,7 @@ def install():
             "-DCUDNN_INCLUDE_DIR:PATH={LIBRARY_INC}\n"
             "-DCUDNN_ROOT:PATH={LIBRARY_PREFIX}\n"
             "-DCMAKE_FIND_DEBUG_MODE=1\n"
-        ).format(os.environ)
+        ).format(**os.environ)
     else:
         cmake_args = (
             "-DJPEG_INCLUDE_DIR={PREFIX}/include\n"
