@@ -218,7 +218,7 @@ index d2c3ee84..36c2e24d 100644
              endif()
  
 -            include_directories(${cudnn_include})
-+            include_directories(${CUDAToolkit_INCLUDE_DIRS})
++            include_directories(${CUDAToolkit_INCLUDE_DIRS} ${CUDNN_INCLUDE_PATH})
              message(STATUS "Enabling CUDA support for dlib.  DLIB WILL USE CUDA, compute capabilities: ${DLIB_CUDA_COMPUTE_CAPABILITIES}")
           else()
              set(DLIB_USE_CUDA OFF CACHE STRING ${DLIB_USE_BLAS_STR} FORCE )
