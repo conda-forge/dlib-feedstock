@@ -58,10 +58,11 @@ outputs:
         - pybind11
         - python
         - sqlite  # [not win]
-        - cuda-cudart-dev                           # [(cuda_compiler_version or "").startswith("12")]
-        - libcublas-dev                             # [(cuda_compiler_version or "").startswith("12")]
-        - libcurand-dev                             # [(cuda_compiler_version or "").startswith("12")]
-        - libcusolver-dev                           # [(cuda_compiler_version or "").startswith("12")]
+        - cuda-cudart-dev                        # [(cuda_compiler_version or "").startswith("12")]
+        - libcublas-dev                          # [(cuda_compiler_version or "").startswith("12")]
+        - libcurand-dev                          # [(cuda_compiler_version or "").startswith("12")]
+        - libcusolver-dev                        # [(cuda_compiler_version or "").startswith("12")]
+        - cuda-toolkit                           # [(cuda_compiler_version or "").startswith("12")]
       run:
         - {{ pin_compatible('numpy') }}
         - python
