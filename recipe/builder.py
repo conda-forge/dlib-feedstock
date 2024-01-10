@@ -32,6 +32,8 @@ def install():
             "-DCUDAToolkit_ROOT:PATH={LIBRARY_PREFIX}\n"
             "-DCUDNN_ROOT:PATH={LIBRARY_PREFIX}\n"
             "-DCMAKE_FIND_DEBUG_MODE=1\n"
+            "-DCMAKE_CUDA_FLAGS=\"--use-local-env\"\n"
+            "-DCMAKE_CUDA_SEPARABLE_COMPILATION:BOOL=OFF\n"
         ).format(**os.environ)
         #  if float(cuda_version) >= 11.995 else "-DCUDAToolkit_ROOT:PATH={CUDA_HOME}\n"
     else:
