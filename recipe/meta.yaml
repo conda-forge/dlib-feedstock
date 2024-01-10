@@ -21,6 +21,7 @@ source:
 build:
   number: 5
   skip: true  # [aarch64 and cuda_compiler_version == "12.0"]
+  skip: true  # [win and cuda_compiler_version == "11.2"]
 
 outputs:
   - name: {{ name }}
