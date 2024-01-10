@@ -31,8 +31,6 @@ def install():
             "-DBUILD_SHARED_LIBS=ON\n"
             "-DDLIB_IN_PROJECT_BUILD=ON\n"
         ).format(**os.environ)
-    #             "-DCMAKE_FIND_DEBUG_MODE=1\n"
-    #       if float(cuda_version) >= 11.995 else "-DCUDAToolkit_ROOT:PATH={CUDA_HOME}\n"
     else:
         cmake_args = (
             "-DJPEG_INCLUDE_DIR={PREFIX}/include\n"
@@ -48,11 +46,11 @@ def install():
 
     env = dict(os.environ)
     env[PATCH_ENV_VAR] = cmake_args + os.environ.get("CMAKE_ARGS", "").replace(" ", "\n")
-    if not WIN:
-        # Some CUDA code doesn't compile with C++17 features and NVCC. C++11 works.
-        for env_flags in ["CXXFLAGS", "DEBUG_CXXFLAGS"]:
-            if env_flags in os.environ:
-                env[env_flags] = os.environ.get(env_flags).replace("-std=c++17", "-std=c++11")
+    # Some CUDA code doesn't compile with C++17 features and NVCC. C++11 works.
+    for env_flags in ["CXXFLAGS", "DEBUG_CXXFLAGS"]:
+        if env_flags in os.environ:
+            env[env_flags] = os.environ.get(env_flags).replace("-std=c++17", "-std=c++11")
+            env[env_flags] = os.environ.get(env_flags).replace("-std=c++14", "-std=c++11")
     print("Added to environment:\n{} = {}".format(
         PATCH_ENV_VAR,
         "".join(cmake_args)
