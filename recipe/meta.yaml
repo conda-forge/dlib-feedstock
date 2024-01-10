@@ -40,8 +40,7 @@ outputs:
         - {{ compiler('cxx') }}
         - {{ compiler('cuda') }}                 # [cuda_compiler_version != "None"]
         - cmake
-        - make  # [unix]
-        - ninja  # [win]
+        - ninja
         - pkg-config
         - python                                 # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
