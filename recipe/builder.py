@@ -33,6 +33,7 @@ def install():
         ).format(**os.environ)
     else:
         cmake_args = (
+            "-G Ninja\n"
             "-DJPEG_INCLUDE_DIR={PREFIX}/include\n"
             "-DPNG_PNG_INCLUDE_DIR={PREFIX}/include\n"
             "-DPNG_INCLUDE_DIR={PREFIX}/include\n"
