@@ -16,6 +16,7 @@ source:
     - fix_libtools_error.patch  # [osx]
     - unvendor_pybind11.patch
     - use_new_cudatoolkit.patch  # [cuda_compiler_version != "None"]
+    - allow_any_generator.patch
 
 build:
   number: 5
