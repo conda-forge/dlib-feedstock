@@ -1,8 +1,5 @@
 azure:
   free_disk_space: true
-  settings_win:
-    pool:
-      vmImage: windows-2019
 build_platform:
   osx_arm64: osx_64
   linux_aarch64: linux_64
