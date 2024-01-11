@@ -15,11 +15,14 @@ source:
     - setup_cmake_args.patch
     - fix_libtools_error.patch  # [osx]
     - unvendor_pybind11.patch
-    - do_not_try_cuda_test_compile.patch  # [linux and aarch64]
+    - use_new_cudatoolkit.patch  # [cuda_compiler_version != "None"]
+    - allow_any_generator.patch
 
 build:
-  number: 4
-  skip: true  # [aarch64 and cuda_compiler_version != "None"]
+  number: 5
+  # xref: https://github.com/conda-forge/dlib-feedstock/issues/84
+  skip: true  # [aarch64 and (cuda_compiler_version or "").startswith("12")]
+  skip: true  # [win and cuda_compiler_version == "11.2"]
 
 outputs:
   - name: {{ name }}
@@ -40,13 +43,14 @@ outputs:
         - {{ compiler('cxx') }}
         - {{ compiler('cuda') }}                 # [cuda_compiler_version != "None"]
         - cmake
-        - make  # [unix]
+        - ninja
         - pkg-config
         - python                                 # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - numpy                                  # [build_platform != target_platform]
         - pybind11                               # [build_platform != target_platform]
       host:
+        - cuda-version {{ cuda_compiler_version }}  # [(cuda_compiler_version or "None") != "None"]
         - cudnn                                  # [cuda_compiler_version != "None"]
         - nccl                                   # [cuda_compiler_version != "None" and linux]
         - libjpeg-turbo
@@ -58,10 +62,10 @@ outputs:
         - pybind11
         - python
         - sqlite  # [not win]
-        - cuda-cudart-dev                           # [(cuda_compiler_version or "").startswith("12")]
-        - libcublas-dev                             # [(cuda_compiler_version or "").startswith("12")]
-        - cuda-nvcc-tools                           # [(cuda_compiler_version or "").startswith("12")]
-        - cuda-nvcc-impl                            # [(cuda_compiler_version or "").startswith("12")]
+        - cuda-cudart-dev                        # [(cuda_compiler_version or "").startswith("12")]
+        - libcublas-dev                          # [(cuda_compiler_version or "").startswith("12")]
+        - libcurand-dev                          # [(cuda_compiler_version or "").startswith("12")]
+        - libcusolver-dev                        # [(cuda_compiler_version or "").startswith("12")]
       run:
         - {{ pin_compatible('numpy') }}
         - python
@@ -84,12 +88,12 @@ outputs:
         - pytest-azurepipelines
         - tqdm
 
-      imports:
-        - dlib
+      imports:  # [not (aarch64 and cuda_compiler_version != "None")]
+        - dlib  # [not (aarch64 and cuda_compiler_version != "None")]
 
       commands:
         - python -m pip check
-        - python -m pytest tools/python/test
+        - python -m pytest tools/python/test  # [not (aarch64 and cuda_compiler_version != "None")]
 
   # Help the linter to avoid errors on a package not having tests.
   {% set dlib_cpu_gpu = name + "-cpu" %}   # [cuda_compiler_version == "None"]
@@ -101,9 +105,11 @@ outputs:
     requirements:
       run:
         - {{ pin_subpackage('dlib', exact=True) }}
-    test:
-      imports:
-        - dlib
+    # aarch64 test fails because of the GLIBC 2.28 issue, which only appears at test time.
+    # xref https://github.com/conda-forge/conda-forge.github.io/issues/1941
+    test:  # [not (aarch64 and cuda_compiler_version != "None")]
+      imports:  # [not (aarch64 and cuda_compiler_version != "None")]
+        - dlib  # [not (aarch64 and cuda_compiler_version != "None")]
 
 about:
   home: http://dlib.net

@@ -1,5 +1,5 @@
---- dlib/CMakeLists.txt		2022-02-11 14:05:15.000000000 +1000
-+++ dlib/CMakeLists.txt.new	2022-02-11 14:05:18.000000000 +1000
+--- a/dlib/CMakeLists.txt	2022-02-11 14:05:15.000000000 +1000
++++ b/dlib/CMakeLists.txt	2022-02-11 14:05:18.000000000 +1000
 @@ -147,8 +147,8 @@
  if (APPLE)
     set(CMAKE_C_ARCHIVE_CREATE   "<CMAKE_AR> Scr <TARGET> <LINK_FLAGS> <OBJECTS>")

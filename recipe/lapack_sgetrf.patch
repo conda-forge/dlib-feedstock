@@ -1,5 +1,5 @@
---- dlib/cmake_utils/find_blas.cmake
-+++ dlib/cmake_utils/find_blas.cmake
+--- a/dlib/cmake_utils/find_blas.cmake
++++ b/dlib/cmake_utils/find_blas.cmake
 @@ -175,15 +175,8 @@
           set(blas_found 1)
           message(STATUS "Found OpenBLAS library")
