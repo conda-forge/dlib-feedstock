@@ -1,5 +1,5 @@
 {% set name = "dlib" %}
-{% set version = "19.24.2" %}
+{% set version = "19.24.4" %}
 {% set tag = "v" ~ ".".join(version.split(".")[:2]) %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 2d4f618073bc6b297aa01ce05595a2d32b5b37e69cafd99f796e77346f6dcfb5
+  sha256: f83dfdf6e85b91fc2b54ea5aad7932a5617cd61e9d13fc72055e22c7d9e264ff
 
   patches:
     - lapack_sgetrf.patch      # [unix]
@@ -19,7 +19,7 @@ source:
     - allow_any_generator.patch
 
 build:
-  number: 5
+  number: 0
   # xref: https://github.com/conda-forge/dlib-feedstock/issues/84
   skip: true  # [aarch64 and (cuda_compiler_version or "").startswith("12")]
   skip: true  # [win and cuda_compiler_version == "11.2"]
@@ -28,14 +28,14 @@ outputs:
   - name: {{ name }}
     build:
       string: cuda{{ cuda_compiler_version | replace('.', '') }}py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version != "None"]
-      string: cpu_py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}                                                # [cuda_compiler_version == "None"]
+      string: cpu_py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version == "None"]
       # weigh down cpu implementation and give cuda preference
       track_features:
         - dlib-cpu                               # [cuda_compiler_version in (undefined, "None")]
       run_exports:
         - {{ pin_subpackage('dlib', max_pin='x.x') }}
     script: build-pkg.sh  # [not win]
-    script: bld-pkg.bat   # [win]
+    script: bld-pkg.bat  # [win]
 
     requirements:
       build:
@@ -88,7 +88,7 @@ outputs:
         - pytest-azurepipelines
         - tqdm
 
-      imports:  # [not (aarch64 and cuda_compiler_version != "None")]
+      imports:   # [not (aarch64 and cuda_compiler_version != "None")]
         - dlib  # [not (aarch64 and cuda_compiler_version != "None")]
 
       commands:
@@ -101,14 +101,14 @@ outputs:
   - name: {{ dlib_cpu_gpu }}
     build:
       string: cuda{{ cuda_compiler_version | replace('.', '') }}py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version != "None"]
-      string: cpu_py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}                                                # [cuda_compiler_version == "None"]
+      string: cpu_py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version == "None"]
     requirements:
       run:
         - {{ pin_subpackage('dlib', exact=True) }}
     # aarch64 test fails because of the GLIBC 2.28 issue, which only appears at test time.
     # xref https://github.com/conda-forge/conda-forge.github.io/issues/1941
-    test:  # [not (aarch64 and cuda_compiler_version != "None")]
-      imports:  # [not (aarch64 and cuda_compiler_version != "None")]
+    test:   # [not (aarch64 and cuda_compiler_version != "None")]
+      imports:   # [not (aarch64 and cuda_compiler_version != "None")]
         - dlib  # [not (aarch64 and cuda_compiler_version != "None")]
 
 about:
