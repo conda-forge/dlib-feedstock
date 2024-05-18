@@ -19,7 +19,7 @@ source:
     - allow_any_generator.patch
 
 build:
-  number: 0
+  number: 1
   # xref: https://github.com/conda-forge/dlib-feedstock/issues/84
   skip: true  # [aarch64 and (cuda_compiler_version or "").startswith("12")]
   skip: true  # [win and cuda_compiler_version == "11.2"]
@@ -40,6 +40,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
         - {{ compiler('cuda') }}                 # [cuda_compiler_version != "None"]
         - cmake
@@ -67,7 +68,6 @@ outputs:
         - libcurand-dev                          # [(cuda_compiler_version or "").startswith("12")]
         - libcusolver-dev                        # [(cuda_compiler_version or "").startswith("12")]
       run:
-        - {{ pin_compatible('numpy') }}
         - python
         - __cuda                                 # [cuda_compiler_version != "None"]
 

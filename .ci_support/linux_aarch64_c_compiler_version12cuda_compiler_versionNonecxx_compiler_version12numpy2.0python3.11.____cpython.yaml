@@ -39,13 +39,13 @@ libpng:
 nccl:
 - '2'
 numpy:
-- '1.22'
+- '2.0'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.8.* *_cpython
+- 3.11.* *_cpython
 sqlite:
 - '3'
 target_platform:
