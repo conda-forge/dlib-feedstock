@@ -1,5 +1,5 @@
 {% set name = "dlib" %}
-{% set version = "19.24.4" %}
+{% set version = "19.24.5" %}
 {% set tag = "v" ~ ".".join(version.split(".")[:2]) %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f83dfdf6e85b91fc2b54ea5aad7932a5617cd61e9d13fc72055e22c7d9e264ff
+  sha256: b580115974901e120960a39be4995f35dc4e58a05f97533ae864d9a907c24616
 
   patches:
     - lapack_sgetrf.patch      # [unix]
@@ -19,7 +19,7 @@ source:
     - allow_any_generator.patch
 
 build:
-  number: 1
+  number: 0
   # xref: https://github.com/conda-forge/dlib-feedstock/issues/84
   skip: true  # [aarch64 and (cuda_compiler_version or "").startswith("12")]
   skip: true  # [win and cuda_compiler_version == "11.2"]
