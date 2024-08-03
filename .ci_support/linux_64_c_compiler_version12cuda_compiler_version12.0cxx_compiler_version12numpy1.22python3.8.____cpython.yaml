@@ -5,17 +5,17 @@ c_compiler_version:
 c_stdlib:
 - sysroot
 c_stdlib_version:
-- '2.12'
+- '2.17'
 cdt_name:
-- cos6
+- cos7
 channel_sources:
-- conda-forge/label/numpy_rc,conda-forge
+- conda-forge
 channel_targets:
 - conda-forge main
 cuda_compiler:
-- None
+- cuda-nvcc
 cuda_compiler_version:
-- None
+- '12.0'
 cudnn:
 - '8'
 cxx_compiler:
@@ -35,13 +35,13 @@ libpng:
 nccl:
 - '2'
 numpy:
-- '2.0'
+- '1.22'
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.9.* *_cpython
+- 3.8.* *_cpython
 sqlite:
 - '3'
 target_platform:
