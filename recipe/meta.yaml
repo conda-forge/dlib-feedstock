@@ -60,6 +60,7 @@ outputs:
         - libpng
         - numpy
         - pip
+        - setuptools
         - pybind11
         - python
         - sqlite  # [not win]
