@@ -16,6 +16,7 @@ def install():
     """
 
     cuda_version = os.environ.get('cuda_compiler_version', None)
+    target_platform = os.environ.get('target_platform', None)
 
     try:
         float(cuda_version)
@@ -44,6 +45,8 @@ def install():
 
     if is_cuda:
         cmake_args += "-DCMAKE_CUDA_ARCHITECTURES=all\n"
+    if target_platform == "osx-arm64":
+        cmake_args += "-DUSE_NEON_INSTRUCTIONS=OFF\n"
 
     env = dict(os.environ)
     env[PATCH_ENV_VAR] = cmake_args + os.environ.get("CMAKE_ARGS", "").replace(" ", "\n")
