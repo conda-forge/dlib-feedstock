@@ -33,4 +33,3 @@ zip_keys:
   - cuda_compiler_version
 - - python
   - numpy
-  - channel_sources

@@ -7,9 +7,9 @@ c_stdlib:
 c_stdlib_version:
 - '2.17'
 cdt_name:
-- cos7
+- conda
 channel_sources:
-- conda-forge/label/python_rc,conda-forge
+- conda-forge
 channel_targets:
 - conda-forge main
 cuda_compiler:
@@ -23,13 +23,13 @@ cxx_compiler:
 cxx_compiler_version:
 - '11'
 docker_image:
-- quay.io/condaforge/linux-anvil-cuda:11.8
+- quay.io/condaforge/linux-anvil-x86_64-cuda11.8:ubi8
 libcblas:
-- 3.9 *netlib
+- 3.9.* *netlib
 libjpeg_turbo:
 - '3'
 liblapack:
-- 3.9 *netlib
+- 3.9.* *netlib
 libpng:
 - '1.6'
 nccl:
@@ -49,11 +49,8 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-  - c_stdlib_version
-  - cdt_name
   - cuda_compiler
   - cuda_compiler_version
   - docker_image
 - - python
   - numpy
-  - channel_sources
