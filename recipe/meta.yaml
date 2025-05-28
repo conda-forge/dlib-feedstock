@@ -85,7 +85,7 @@ outputs:
         - more-itertools
         - pillow
         - pip
-        - pytest>=7
+        - pytest >=7
         - pytest-azurepipelines
         - tqdm
 
