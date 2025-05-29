@@ -20,9 +20,6 @@ source:
 
 build:
   number: 0
-  # xref: https://github.com/conda-forge/dlib-feedstock/issues/84
-  skip: true  # [aarch64 and (cuda_compiler_version or "").startswith("12")]
-  skip: true  # [win and cuda_compiler_version == "11.2"]
 
 outputs:
   - name: {{ name }}
