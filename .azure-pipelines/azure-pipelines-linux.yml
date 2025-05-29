@@ -24,6 +24,10 @@ jobs:
         CONFIG: linux_aarch64_cuda_compiler_version11.8
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64-cuda11.8:ubi8
+      linux_aarch64_cuda_compiler_version12.6:
+        CONFIG: linux_aarch64_cuda_compiler_version12.6
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
       linux_aarch64_cuda_compiler_versionNone:
         CONFIG: linux_aarch64_cuda_compiler_versionNone
         UPLOAD_PACKAGES: 'True'
