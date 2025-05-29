@@ -101,7 +101,11 @@ outputs:
       string: cuda{{ cuda_compiler_version | replace('.', '') }}py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version != "None"]
       string: cpu_py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version == "None"]
     requirements:
+      host:
+        - cuda-version {{ cuda_compiler_version }}  # [(cuda_compiler_version or "None") != "None"]
+        - python
       run:
+        - python
         - {{ pin_subpackage('dlib', exact=True) }}
     # aarch64 test fails because of the GLIBC 2.28 issue, which only appears at test time.
     # xref https://github.com/conda-forge/conda-forge.github.io/issues/1941
