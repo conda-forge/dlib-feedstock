@@ -1,5 +1,5 @@
 {% set name = "dlib" %}
-{% set version = "19.24.8" %}
+{% set version = "20.0.0" %}
 {% set tag = "v" ~ ".".join(version.split(".")[:2]) %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 9135900983e279b5e5d0b1bb31b684a3054ea4f3ea1b1c69e8a675659271003d
+  sha256: 9ab6a6fe113cc36a20c3f611c57fa6a07f18d1169bd04efb85c32e21b23b7d2b
 
   patches:
     - lapack_sgetrf.patch      # [unix]
@@ -20,9 +20,6 @@ source:
 
 build:
   number: 0
-  # xref: https://github.com/conda-forge/dlib-feedstock/issues/84
-  skip: true  # [aarch64 and (cuda_compiler_version or "").startswith("12")]
-  skip: true  # [win and cuda_compiler_version == "11.2"]
 
 outputs:
   - name: {{ name }}
@@ -85,7 +82,7 @@ outputs:
         - more-itertools
         - pillow
         - pip
-        - pytest>=7
+        - pytest >=7
         - pytest-azurepipelines
         - tqdm
 
@@ -104,7 +101,11 @@ outputs:
       string: cuda{{ cuda_compiler_version | replace('.', '') }}py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version != "None"]
       string: cpu_py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version == "None"]
     requirements:
+      host:
+        - cuda-version {{ cuda_compiler_version }}  # [(cuda_compiler_version or "None") != "None"]
+        - python
       run:
+        - python
         - {{ pin_subpackage('dlib', exact=True) }}
     # aarch64 test fails because of the GLIBC 2.28 issue, which only appears at test time.
     # xref https://github.com/conda-forge/conda-forge.github.io/issues/1941
