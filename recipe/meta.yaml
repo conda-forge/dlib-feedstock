@@ -19,7 +19,7 @@ source:
     - allow_any_generator.patch
 
 build:
-  number: 2
+  number: 3
 
 outputs:
   - name: {{ name }}
@@ -28,7 +28,7 @@ outputs:
       string: cpu_py{{ CONDA_PY }}h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version == "None"]
       # weigh down cpu implementation and give cuda preference
       track_features:
-        - dlib-cpu                               # [cuda_compiler_version in (undefined, "None")]
+        - dlib-cpu                               # [cuda_compiler_version == "None"]
       run_exports:
         - {{ pin_subpackage('dlib', max_pin='x.x') }}
     script: build-pkg.sh  # [not win]
@@ -61,10 +61,10 @@ outputs:
         - pybind11
         - python
         - sqlite  # [not win]
-        - cuda-cudart-dev                        # [(cuda_compiler_version or "").startswith("12")]
-        - libcublas-dev                          # [(cuda_compiler_version or "").startswith("12")]
-        - libcurand-dev                          # [(cuda_compiler_version or "").startswith("12")]
-        - libcusolver-dev                        # [(cuda_compiler_version or "").startswith("12")]
+        - cuda-cudart-dev                        # [cuda_compiler_version != "None"]
+        - libcublas-dev                          # [cuda_compiler_version != "None"]
+        - libcurand-dev                          # [cuda_compiler_version != "None"]
+        - libcusolver-dev                        # [cuda_compiler_version != "None"]
       run:
         - python
         - __cuda                                 # [cuda_compiler_version != "None"]
