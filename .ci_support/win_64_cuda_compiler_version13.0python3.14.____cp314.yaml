@@ -1,0 +1,33 @@
+c_compiler:
+- vs2022
+c_stdlib:
+- vs
+channel_sources:
+- conda-forge,conda-forge/label/python_rc
+channel_targets:
+- conda-forge main
+cuda_compiler:
+- cuda-nvcc
+cuda_compiler_version:
+- '13.0'
+cudnn:
+- '9'
+cxx_compiler:
+- vs2022
+libjpeg_turbo:
+- '3'
+libpng:
+- '1.6'
+numpy:
+- '2'
+pin_run_as_build:
+  python:
+    min_pin: x.x
+    max_pin: x.x
+python:
+- 3.14.* *_cp314
+target_platform:
+- win-64
+zip_keys:
+- - python
+  - channel_sources
