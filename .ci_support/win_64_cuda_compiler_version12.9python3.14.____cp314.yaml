@@ -3,7 +3,7 @@ c_compiler:
 c_stdlib:
 - vs
 channel_sources:
-- conda-forge,conda-forge/label/python_rc
+- conda-forge
 channel_targets:
 - conda-forge main
 cuda_compiler:
@@ -11,7 +11,7 @@ cuda_compiler:
 cuda_compiler_version:
 - '12.9'
 cudnn:
-- '9'
+- '9.10'
 cxx_compiler:
 - vs2022
 libjpeg_turbo:
@@ -29,5 +29,5 @@ python:
 target_platform:
 - win-64
 zip_keys:
-- - python
-  - channel_sources
+- - cuda_compiler_version
+  - cudnn

@@ -19,7 +19,7 @@ source:
     - allow_any_generator.patch
 
 build:
-  number: 3
+  number: 4
 
 outputs:
   - name: {{ name }}
