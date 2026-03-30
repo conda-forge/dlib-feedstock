@@ -11,7 +11,7 @@ cuda_compiler:
 cuda_compiler_version:
 - '12.9'
 cudnn:
-- '9.10'
+- '9'
 cxx_compiler:
 - vs2022
 libjpeg_turbo:
@@ -28,6 +28,3 @@ python:
 - 3.12.* *_cpython
 target_platform:
 - win-64
-zip_keys:
-- - cuda_compiler_version
-  - cudnn

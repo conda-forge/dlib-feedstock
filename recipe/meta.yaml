@@ -1,5 +1,5 @@
 {% set name = "dlib" %}
-{% set version = "20.0.0" %}
+{% set version = "20.0.1" %}
 {% set tag = "v" ~ ".".join(version.split(".")[:2]) %}
 
 package:
@@ -8,18 +8,17 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 9ab6a6fe113cc36a20c3f611c57fa6a07f18d1169bd04efb85c32e21b23b7d2b
+  sha256: 7cb2a09467de032332c743bc967007f016598c66c9c9ebc54a5b66d3d9e46d54
 
   patches:
     - lapack_sgetrf.patch      # [unix]
     - setup_cmake_args.patch
     - fix_libtools_error.patch  # [osx]
     - unvendor_pybind11.patch
-    - use_new_cudatoolkit.patch  # [cuda_compiler_version != "None"]
     - allow_any_generator.patch
 
 build:
-  number: 4
+  number: 0
 
 outputs:
   - name: {{ name }}

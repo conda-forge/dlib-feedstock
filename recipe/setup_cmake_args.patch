@@ -1,13 +1,11 @@
 diff --git a/setup.py b/setup.py
-index 219583b1f9..30aa2ee794 100644
+index 59b65a622d..8caef21d44 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -135,17 +135,14 @@ def build_extension(self, ext):
-         cmake_args = ['-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=' + extdir,
-                       '-DPYTHON_EXECUTABLE=' + sys.executable]
- 
--        cmake_args += cmake_extra_options 
-+        cmake_args += cmake_extra_options
+@@ -183,16 +183,13 @@ def build_extension(self, ext):
+                 cmake_args_dict[key] = value
+         cmake_args = ['-D' + key + '=' + str(value) for key, value in cmake_args_dict.items()]
+         cmake_args += cmake_extra_options
 +        cmake_args += os.environ.get("DLIB_CMAKE_ARGS", "").strip().splitlines()
  
          cfg = 'Debug' if self.debug else 'Release'
@@ -18,7 +16,7 @@ index 219583b1f9..30aa2ee794 100644
 -            if sys.maxsize > 2**32:
 -                cmake_args += ['-A', 'x64']
 -            # Do a parallel build
--            build_args += ['--', '/m'] 
+-            build_args += ['--', '/m']
          else:
              cmake_args += ['-DCMAKE_BUILD_TYPE=' + cfg]
              # Do a parallel build
