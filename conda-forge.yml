@@ -1,11 +1,3 @@
-azure:
-  free_disk_space: true
-  settings_win:
-    variables:
-      CONDA_BLD_PATH: C:\\bld\\
-build_platform:
-  linux_aarch64: linux_64
-  osx_arm64: osx_64
 conda_build:
   pkg_format: null
 conda_forge_output_validation: true
@@ -14,4 +6,12 @@ github:
   tooling_branch_name: main
 provider:
   win: azure
+  linux_aarch64: default
+  osx_arm64: default
 test: native_and_emulated
+workflow_settings:
+  free_disk_space: quick
+  build_workspace_dir:
+    - provider: azure
+      os: win
+      value: C:\\bld\\
